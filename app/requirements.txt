@@ -1,5 +1,11 @@
-tensorflow==2.13.0
-numpy==1.24.2
-pandas==2.0.3
-
-
+flask
+flask-cors
+werkzeug
+numpy
+opencv-python
+joblib
+tensorflow
+pandas
+pickle5
+pyzbar
+scikit-learn

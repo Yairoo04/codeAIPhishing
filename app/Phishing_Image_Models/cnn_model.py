@@ -7,7 +7,7 @@ import os
 def load_dataset(dataset_path, image_size=(128, 128), batch_size=32):
     train_dataset = tf.keras.utils.image_dataset_from_directory(
         dataset_path,
-        label_mode='binary',  # Nhãn nhị phân: 0 (legitimate), 1 (phishing)
+        label_mode='binary',  # Nhãn nhị phân: 0 (legit), 1 (phishing)
         image_size=image_size,
         batch_size=batch_size,
         validation_split=0.2,
@@ -50,7 +50,7 @@ def build_cnn(input_shape=(128, 128, 3)):
     
     return model
 
-dataset_path = "../dataset"
+dataset_path = "../dataset_Image"
 epochs = 30
 batch_size = 32
 

@@ -8,7 +8,7 @@ from data_loader import load_dataset_paths, preprocess_image
 import pickle
 
 
-dataset_path = "../dataset"
+dataset_path = "E:/TTCS/GiuaKy/dataset_Image"
 
 image_paths, labels = load_dataset_paths(dataset_path)
 
@@ -31,6 +31,6 @@ accuracy = accuracy_score(y_test, y_pred)
 
 print(f"Độ chính xác của Random Forest: {accuracy:.4f}")
 
-with open("../models/rf_image_model.pkl", "wb") as f:
+with open("E:/TTCS/GiuaKy/models/rf_image_model.pkl", "wb") as f:
     pickle.dump(rf_model, f)
 print("Mô hình Random Forest đã được lưu thành công!")

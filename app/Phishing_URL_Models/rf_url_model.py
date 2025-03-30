@@ -3,7 +3,7 @@ import pandas as pd
 import pickle
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import confusion_matrix
 from feature_extraction import extract_features
 
 # Load dataset
@@ -51,5 +51,19 @@ with open(model_path, "wb") as f:
 
 print(f"Model đã được lưu tại: {model_path}")
 y_pred = rf_model.predict(X_test)
-accuracy = accuracy_score(y_test, y_pred)
-print(f"Độ chính xác của Random Forest: {accuracy:.2f}")
+labels = ['Phishing', 'Legitimate']
+cm = confusion_matrix(y_test, y_pred, labels=labels)
+
+tp = cm[0, 0]
+fn = cm[0, 1]
+fp = cm[1, 0]
+tn = cm[1, 1]
+
+accuracy_manual = (tp + tn) / (tp + tn + fp + fn)
+precision_manual = tp / (tp + fp) if (tp + fp) != 0 else 0
+recall_manual = tp / (tp + fn) if (tp + fn) != 0 else 0
+
+print("\nĐánh giá mô hình:")
+print(f"- Độ chính xác (Accuracy): {accuracy_manual:.2f}")
+print(f"- Độ chính xác dự đoán Phishing (Precision): {precision_manual:.2f}")
+print(f"- Khả năng nhận diện Phishing đúng (Recall): {recall_manual:.2f}")

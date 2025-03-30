@@ -3,7 +3,7 @@ import pickle
 from sklearn.model_selection import train_test_split
 from sklearn.svm import SVC
 from sklearn.preprocessing import StandardScaler
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score, confusion_matrix
 from preprocess import preprocess_data, load_data
 
 CSV_PATH = "../dataset_File/data_File.csv"
@@ -21,12 +21,26 @@ def svm_model():
     X_test_scaled = scaler.transform(X_test)
     
     model = SVC(kernel="rbf", C=1.0, gamma="scale", probability=True, random_state=42)
+    
     model.fit(X_train_scaled, y_train)
     
     y_pred = model.predict(X_test_scaled)
-    accuracy = accuracy_score(y_test, y_pred)
-    print(f"- Độ chính xác: {accuracy:.4f}")
-        
+    cm = confusion_matrix(y_test, y_pred, labels=[1, 0])
+
+    tp = cm[0, 0]
+    fn = cm[0, 1]
+    fp = cm[1, 0]
+    tn = cm[1, 1]
+    
+    accuracy_manual = (tp + tn) / (tp + tn + fp + fn) if (tp + tn + fp + fn) != 0 else 0
+    precision_manual = tp / (tp + fp) if (tp + fp) != 0 else 0
+    recall_manual = tp / (tp + fn) if (tp + fn) != 0 else 0
+
+    print("\nĐánh giá mô hình:")
+    print(f"- Độ chính xác (Accuracy): {accuracy_manual:.2f}")
+    print(f"- Độ chính xác dự đoán Phishing (Precision): {precision_manual:.2f}")
+    print(f"- Khả năng nhận diện Phishing đúng (Recall): {recall_manual:.2f}")
+    
     model_path = "../models/svm_model_file.pkl"
     with open(model_path, "wb") as f:
         pickle.dump(model, f)

@@ -7,7 +7,7 @@ from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics import accuracy_score, precision_score, recall_score, confusion_matrix
 
-data_path = '../dataset_URL/phishing.csv'
+data_path = '../dataset_URL/phishing_URL.csv'
 data = pd.read_csv(data_path)
 
 if 'URL' not in data.columns or 'Label' not in data.columns:

@@ -5,42 +5,28 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator
 import numpy as np
 import cv2
 
-def load_dataset(dataset_path, img_size=(128, 128), batch_size=32, augment=True):
-    datagen_params = {
-        "rescale": 1.0 / 255,
-        "validation_split": 0.2  
-    }
-
-    if augment:
-        datagen_params.update({
-            "rotation_range": 20,
-            "width_shift_range": 0.2,
-            "height_shift_range": 0.2,
-            "shear_range": 0.2,
-            "zoom_range": 0.2,
-            "horizontal_flip": True
-        })
-
-    train_datagen = ImageDataGenerator(**datagen_params)
-    val_datagen = ImageDataGenerator(rescale=1.0 / 255, validation_split=0.2)
-
-    train_generator = train_datagen.flow_from_directory(
+def load_dataset(dataset_path, image_size=(128, 128), batch_size=32):
+    train_dataset = tf.keras.utils.image_dataset_from_directory(
         dataset_path,
-        target_size=img_size,
+        label_mode='binary',  # Nhãn nhị phân: 0 (legit), 1 (phishing)
+        image_size=image_size,
         batch_size=batch_size,
-        class_mode='binary',
-        subset='training'
+        validation_split=0.2,
+        subset="training",
+        seed=42
     )
-
-    val_generator = val_datagen.flow_from_directory(
+    
+    val_dataset = tf.keras.utils.image_dataset_from_directory(
         dataset_path,
-        target_size=img_size,
+        label_mode='binary',
+        image_size=image_size,
         batch_size=batch_size,
-        class_mode='binary',
-        subset='validation'
+        validation_split=0.2,
+        subset="validation",
+        seed=42
     )
-
-    return train_generator, val_generator
+    
+    return train_dataset, val_dataset
 
 def load_dataset_paths(dataset_path):
     image_paths = []

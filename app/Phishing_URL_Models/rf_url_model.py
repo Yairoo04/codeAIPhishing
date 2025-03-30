@@ -7,7 +7,7 @@ from sklearn.metrics import confusion_matrix
 from feature_extraction import extract_features
 
 # Load dataset
-data_path = '../data/phishing.csv'
+data_path = '../dataset_URL/phishing_URL.csv'
 data = pd.read_csv(data_path)
 
 if 'URL' not in data.columns or 'Label' not in data.columns:
@@ -20,7 +20,6 @@ data = data[data['Label'].isin([0, 1])]
 label_mapping = {0: 'Legitimate', 1: 'Phishing'}
 data['Label'] = data['Label'].map(label_mapping)
 
-# Trích xuất các đặc trưng từ URL
 features_list = []
 valid_labels = []
 
@@ -45,11 +44,7 @@ print(f"Số lượng mẫu train: {len(X_train)}, Số lượng mẫu test: {le
 rf_model = RandomForestClassifier(n_estimators=100, random_state=42)
 rf_model.fit(X_train, y_train)
 
-model_path = "../models/random_forest.pkl"
-with open(model_path, "wb") as f:
-    pickle.dump(rf_model, f)
 
-print(f"Model đã được lưu tại: {model_path}")
 y_pred = rf_model.predict(X_test)
 labels = ['Phishing', 'Legitimate']
 cm = confusion_matrix(y_test, y_pred, labels=labels)
@@ -67,3 +62,9 @@ print("\nĐánh giá mô hình:")
 print(f"- Độ chính xác (Accuracy): {accuracy_manual:.2f}")
 print(f"- Độ chính xác dự đoán Phishing (Precision): {precision_manual:.2f}")
 print(f"- Khả năng nhận diện Phishing đúng (Recall): {recall_manual:.2f}")
+
+model_path = "../models/random_forest_URL.pkl"
+with open(model_path, "wb") as f:
+    pickle.dump(rf_model, f)
+
+print(f"Model đã được lưu tại: {model_path}")

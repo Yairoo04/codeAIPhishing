@@ -26,7 +26,11 @@ ALLOWED_PDF_EXTENSION = {"pdf"}
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
-MODEL_DIR = r"D:\1. BaiTap\4. Python\CodeAIPhishing\models"
+current_dir = os.path.dirname(os.path.abspath(__file__))
+
+base_dir = os.path.dirname(current_dir)
+
+MODEL_DIR = os.path.join(base_dir, "models")
 
 with open(os.path.join(MODEL_DIR, "random_forest_URL.pkl"), "rb") as f:
     rf_url_model = pickle.load(f)

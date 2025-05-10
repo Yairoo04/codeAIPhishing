@@ -1,13 +1,19 @@
+import os
 import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras import layers, callbacks, applications
 import matplotlib.pyplot as plt
 from data_loader import load_dataset
 
-# Sử dụng Transfer Learning (EfficientNetB0)
-def build_cnn(input_shape=(128, 128, 3)):
-    base_model = applications.EfficientNetB0(weights='imagenet', include_top=False, input_shape=input_shape)
-    base_model.trainable = False 
+DATA_DIR = '../dataset_Image'
+MODEL_OUT = '../models/cnn_phishing_image.keras'
+IMG_SIZE = (128, 128)
+EPOCHS = 30
+
+def build_cnn(input_shape=(*IMG_SIZE, 3), learning_rate=1e-4):
+    base_model = applications.EfficientNetB0(
+        weights='imagenet', include_top=False, input_shape=input_shape)
+    base_model.trainable = False
 
     model = keras.Sequential([
         base_model,
@@ -18,48 +24,60 @@ def build_cnn(input_shape=(128, 128, 3)):
         layers.Dropout(0.5),
         layers.Dense(1, activation='sigmoid')
     ])
-    
+
     model.compile(
-        optimizer=keras.optimizers.Adam(learning_rate=0.0001),
+        optimizer=keras.optimizers.Adam(learning_rate=learning_rate),
         loss='binary_crossentropy',
         metrics=['accuracy']
     )
-    
     return model
 
-dataset_path = "../dataset_Image"
-epochs = 30
-batch_size = 32
 
-train_dataset, val_dataset = load_dataset(dataset_path, batch_size=batch_size)
+def plot_history(history, save_path='training_history.png'):
+    acc = history.history.get('accuracy', [])
+    val_acc = history.history.get('val_accuracy', [])
+    loss = history.history.get('loss', [])
+    val_loss = history.history.get('val_loss', [])
 
-model = build_cnn()
-model.summary()
+    plt.figure(figsize=(12, 5))
+    plt.subplot(1, 2, 1)
+    plt.plot(acc, label='Train Accuracy')
+    plt.plot(val_acc, label='Val Accuracy')
+    plt.title('Accuracy')
+    plt.legend()
 
-early_stopping = callbacks.EarlyStopping(monitor='val_loss', patience=5, restore_best_weights=True)
-reduce_lr = callbacks.ReduceLROnPlateau(monitor='val_loss', factor=0.5, patience=3)
+    plt.subplot(1, 2, 2)
+    plt.plot(loss, label='Train Loss')
+    plt.plot(val_loss, label='Val Loss')
+    plt.title('Loss')
+    plt.legend()
+    plt.savefig(save_path)
+    plt.show()
 
-history = model.fit(
-    train_dataset,
-    validation_data=val_dataset,
-    epochs=epochs,
-    callbacks=[early_stopping, reduce_lr]
-)
 
-plt.figure(figsize=(12, 5))
-plt.subplot(1, 2, 1)
-plt.plot(history.history['accuracy'], label='Train Accuracy')
-plt.plot(history.history['val_accuracy'], label='Validation Accuracy')
-plt.legend()
-plt.title('Accuracy')
+def main():
+    train_ds, val_ds = load_dataset(DATA_DIR)
 
-plt.subplot(1, 2, 2)
-plt.plot(history.history['loss'], label='Train Loss')
-plt.plot(history.history['val_loss'], label='Validation Loss')
-plt.legend()
-plt.title('Loss')
+    model = build_cnn()
+    model.summary()
 
-plt.show()
+    early_stop = callbacks.EarlyStopping(
+        monitor='val_loss', patience=5, restore_best_weights=True)
+    reduce_lr = callbacks.ReduceLROnPlateau(
+        monitor='val_loss', factor=0.5, patience=3)
 
-model.save("../models/cnn_phishing_image.keras")
-print("Mô hình đã được lưu thành công!")
+    history = model.fit(
+        train_ds,
+        validation_data=val_ds,
+        epochs=EPOCHS,
+        callbacks=[early_stop, reduce_lr]
+    )
+
+    plot_history(history)
+
+    os.makedirs(os.path.dirname(MODEL_OUT), exist_ok=True)
+    model.save(MODEL_OUT)
+    print(f"Model saved to {MODEL_OUT}")
+
+if __name__ == '__main__':
+    main()

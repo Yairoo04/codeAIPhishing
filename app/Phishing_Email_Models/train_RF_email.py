@@ -1,0 +1,68 @@
+import os
+import pickle
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import confusion_matrix, classification_report
+import seaborn as sns
+from preprocess import load_data, preprocess_data
+
+CSV_PATH = "../dataset_Email/email_phishing_data.csv"
+MODEL_PATH = "../models/random_forest_email.pkl"
+
+def plot_confusion_matrix(cm, labels, title="Confusion Matrix"):
+    plt.figure(figsize=(6, 5))
+    sns.heatmap(cm, annot=True, fmt='d', cmap="Blues", xticklabels=labels, yticklabels=labels, cbar=False)
+    plt.title(title)
+    plt.xlabel("Predicted label")
+    plt.ylabel("True label")
+    plt.savefig('confusion_matrix.png')
+    plt.show()
+    plt.close()
+
+def rf_model():
+    df = load_data(CSV_PATH)
+
+    X, y = preprocess_data(df)
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.2, random_state=42, stratify=y
+    )
+    print(f"+ Số lượng mẫu train: {len(X_train)}")
+    print(f"+ Số lượng mẫu test: {len(X_test)}")
+
+    assert X.shape[1] == 30, f"Expected 30 features, got {X.shape[1]}"
+
+    rf = RandomForestClassifier(n_estimators=100, random_state=42, class_weight='balanced')
+    rf.fit(X_train, y_train)
+
+    assert isinstance(rf, RandomForestClassifier), f"Model is not a RandomForestClassifier, got {type(rf)}"
+
+    os.makedirs("models", exist_ok=True)
+    with open(MODEL_PATH, "wb") as f:
+        pickle.dump(rf, f)
+    print(f"Model đã được lưu tại: {MODEL_PATH}")
+
+    y_pred = rf.predict(X_test)
+    cm = confusion_matrix(y_test, y_pred, labels=[1, 0])
+    print("\nMa trận nhầm lẫn (labels=[1: Phishing, 0: Benign]):")
+    print(cm)
+
+    tp, fn = cm[0]
+    fp, tn = cm[1]
+
+    accuracy = (tp + tn) / (tp + tn + fp + fn) if (tp + tn + fp + fn) else 0
+    precision = tp / (tp + fp) if (tp + fp) else 0
+    recall = tp / (tp + fn) if (tp + fn) else 0
+
+    print("\nĐánh giá mô hình:")
+    print(f"- Accuracy  : {accuracy:.2f}")
+    print(f"- Precision : {precision:.2f}")
+    print(f"- Recall    : {recall:.2f}")
+    print("\nClassification Report:")
+    print(classification_report(y_test, y_pred))
+
+    plot_confusion_matrix(cm, labels=["Phishing", "Benign"])
+
+if __name__ == "__main__":
+    rf_model()

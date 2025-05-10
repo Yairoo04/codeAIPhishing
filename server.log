@@ -1,0 +1,439 @@
+2025-05-08 20:23:43,680 - INFO - 127.0.0.1 - - [08/May/2025 20:23:43] "GET / HTTP/1.1" 200 -
+2025-05-08 20:23:43,830 - INFO - 127.0.0.1 - - [08/May/2025 20:23:43] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-05-08 20:23:43,833 - INFO - 127.0.0.1 - - [08/May/2025 20:23:43] "GET /static/app.js HTTP/1.1" 200 -
+2025-05-08 20:23:43,947 - INFO - 127.0.0.1 - - [08/May/2025 20:23:43] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-08 20:23:53,247 - INFO - Loaded model: random_forest_URL_pickle
+2025-05-08 20:23:53,268 - INFO - 127.0.0.1 - - [08/May/2025 20:23:53] "POST /predict HTTP/1.1" 200 -
+2025-05-08 20:24:06,427 - INFO - Extracted headers: {'Delivered-To': 'legioiho@gmail.com', 'Received': 'by 37cbecd3456f with HTTP id 67f77d499042f9a61876ea44; Thu, 10 Apr 2025 08:11:53 GMT', 'X-Google-Smtp-Source': 'AGHT+IGPYwX1yc6BPJSRKveYRuGNzgVs4xWFPU5Ms/WqYJGG2zrH0d0tCPGP5uMLEHNIaa65sUv5', 'X-Received': 'by 2002:ac8:5746:0:b0:476:7e6b:d291 with SMTP id d75a77b69052e-4796e37a193mr17068691cf.37.1744272713897;        Thu, 10 Apr 2025 01:11:53 -0700 (PDT)', 'ARC-Seal': 'i=1; a=rsa-sha256; t=1744272713; cv=none;        d=google.com; s=arc-20240605;        b=NzmwKvCeJKNdi26no5xo25JsTWLEE8qkby4xOLujZOPNcmYz4gM5g4ehrmB90KQTdO         D0rtNU6t/rHH/Hu6jKGCZvrJjFn8w+Z2C4vkrzR6uXkHVBTEUo/pGqvBI30bBISPiS8m         54S/UcWXpAVgNp1WvyxKuFiQzkkyUW18WMH5uXMKVwBnoQCLoNAbA2SbTvtCRBpzvzZW         X7tpM3EtdrdfwK77Xm7GwKo8JUYtH2QCIbhHpMpbsEcE0mQl9zXoQtPOIyOpLwpSf/UF         TAbZ89KdxrRvM1n+aI3audZvjDXjz3csoSx1gApFuC56XQ5zHOTKw4qUvQh5PHfElZDQ         cgKA==', 'ARC-Message-Signature': 'i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;        h=message-id:list-unsubscribe-post:list-unsubscribe:to:from:subject         :mime-version:date:dkim-signature:dkim-signature;        bh=iTx7PK948cpvGS5YwuCkjw//hUQTIXNg0LKqUh1uRR8=;        fh=UFWdutZQ8jW58mqgJMccbP94CxJkXYfYZheEbUIKYEM=;        b=a87hPwsvij/k/xs0c7Be9Z5/XWihIm4FUlBIDppQXyqIU0S7qzTxZSRqPj/PouGZHa         I3O7Tw09BKyhm4hKPHLvw8GFJLxf1oaRngrq/lUhkFCCRaATZuw0dNqiBHcriusM7lQc         J/5C0RmXQx7d4PzdSyfOtiqzECThl7UFip3FMFqHPDsOd7SE9n7v9Dugx6HKc4TmFK/O         Yhx26pN9iePqc4FBAEqAjqr1qH3YtIqZURiitcGnevEQ4G4545nQGJ/3jr1IL/6PUo9Q         fM180DjXy05L3hMbx/QzUZqisja/HXmDQOfESWYBdw/142Mew/916PXMkBw/Immb38yN         zy7g==;        dara=google.com', 'ARC-Authentication-Results': 'i=1; mx.google.com;       dkim=pass header.i=@cio56239.tryhackme.com header.s=smtp header.b=NGBUJjgt;       dkim=pass header.i=@mailgun.org header.s=mg header.b=pYqsqNek;       spf=pass (google.com: domain of postmaster@cio56239.tryhackme.com designates 159.112.241.136 as permitted sender) smtp.mailfrom=postmaster@cio56239.tryhackme.com;       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=tryhackme.com', 'Return-Path': '<postmaster@cio56239.tryhackme.com>', 'Received-SPF': 'pass (google.com: domain of postmaster@cio56239.tryhackme.com designates 159.112.241.136 as permitted sender) client-ip=159.112.241.136;', 'Authentication-Results': 'mx.google.com;       dkim=pass header.i=@cio56239.tryhackme.com header.s=smtp header.b=NGBUJjgt;       dkim=pass header.i=@mailgun.org header.s=mg header.b=pYqsqNek;       spf=pass (google.com: domain of postmaster@cio56239.tryhackme.com designates 159.112.241.136 as permitted sender) smtp.mailfrom=postmaster@cio56239.tryhackme.com;       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=tryhackme.com', 'DKIM-Signature': 'a=rsa-sha256; v=1; c=relaxed/relaxed; d=mailgun.org; q=dns/txt; s=mg; t=1744272713; x=1744279913; h=Message-Id: List-Unsubscribe-Post: List-Unsubscribe: To: To: From: From: Subject: Subject: Content-Type: Mime-Version: Date: X-Feedback-Id: Sender; bh=iTx7PK948cpvGS5YwuCkjw//hUQTIXNg0LKqUh1uRR8=; b=pYqsqNekJiTEADQ5kRIPsITQjukuEKUN3M2H7SfDLTxMXUVvYHTOALDPsOeWbuvrRsztEpSfhcJdfdeSHmXN/FipW00BmSjSdoKNTfvo0aaKtPDJS1qKfqBwSBiuFM1ywrSIiw/jDZqHgavKZJl5Ipo3ofxebHxxi+yvq4rrrN0=', 'X-Feedback-Id': 'postmaster@cio56239.tryhackme.com::5eb3f9f45e348a34cf90b8e5:mailgun', 'X-Mailgun-Sending-Ip': '159.112.241.136', 'X-Mailgun-Sending-Ip-Pool-Name': '', 'X-Mailgun-Sending-Ip-Pool': '', 'X-Mailgun-Sid': 'WyI3NzZkMiIsImxlZ2lvaWhvQGdtYWlsLmNvbSIsIjI4NmQ1YSJd', 'Date': 'Thu, 10 Apr 2025 08:11:53 +0000', 'Mime-Version': '1.0', 'Content-Type': 'multipart/alternative; boundary="e450f17d81a9e614d749e95e503cd8d1253e7dc2359480300592dcbf7200"', 'Subject': 'Last Chance For A Mystery Discount! Less than 24h Left ?', 'From': 'TryHackMe <hello@tryhackme.com>', 'To': 'legioiho@gmail.com', 'X-Mailgun-Dkim': 'true', 'X-Mailgun-Native-Send': 'true', 'X-Mailgun-Track-Clicks': 'false', 'X-Mailgun-Track-Opens': 'false', 'X-Mailer': 'Customer.io (dgTK1QUDAP3ZpQH82aUBAZYet8aGteAycGLoe_cbJQ==; +https://whatis.customeriomail.com)', 'X-Report-Abuse-To': 'badactor@customer.io', 'List-Unsubscribe': '<mailto:32.MRTVISZRKFKUIQKQGNNHAUKIHAZGCVKCIFNFSZLUHBQUO5DFIF4WGR2MN5SV6Y3CJJIT2PI=@unsubscribe2.customer.io>, <https://e.customeriomail.com/unsubscribe/dgTK1QUDAP3ZpQH82aUBAZYet8aGteAycGLoe_cbJQ==>', 'List-Unsubscribe-Post': 'List-Unsubscribe=One-Click', 'X-Mailgun-Variables': '{"email_id": "dgTK1QUDAP3ZpQH82aUBAZYet8aGteAycGLoe_cbJQ=="}', 'Message-Id': '<20250410081153.9e1375030d5b8e37@cio56239.tryhackme.com>'}
+2025-05-08 20:24:06,444 - INFO - Extracted email features: {'hops': 3, 'missing_subject': 0, 'missing_to': 0, 'missing_content-type': 0, 'missing_mime-version': 1, 'missing_x-mailer': 0, 'missing_delivered-to': 0, 'missing_list-unsubscribe': 0, 'missing_received-spf': 0, 'missing_reply-to': 1, 'str_from_chevron': 1, 'str_to_chevron': 0, 'str_message-ID_dollar': 0, 'str_return-path_bounce': 0, 'str_content-type_texthtml': 0, 'domain_match_from_return-path': 0, 'domain_match_to_from': 0, 'domain_match_to_message-id': 0, 'domain_match_from_reply-to': 0, 'domain_match_message-id_from': 0, 'length_from': 31, 'num_recipients_to': 1, 'num_recipients_cc': 0, 'time_zone': 1, 'day_of_week': 3, 'span_time': 1.0, 'date_comp_date_received': 1, 'content-encoding-val': 0, 'received_str_forged': 1, 'number_replies': 0}
+2025-05-08 20:24:06,484 - INFO - Loaded model: random_forest_email_pickle
+2025-05-08 20:24:06,494 - INFO - Prediction for Last_Chance_For_A_Mystery_Discount_Less_than_24h_Left_.eml: rf_confidence=0.1200, result=Legitimate
+2025-05-08 20:24:06,496 - INFO - 127.0.0.1 - - [08/May/2025 20:24:06] "POST /predict HTTP/1.1" 200 -
+2025-05-08 20:24:21,731 - INFO - Loaded model: random_forest_file_pickle
+2025-05-08 20:24:21,739 - INFO - 127.0.0.1 - - [08/May/2025 20:24:21] "POST /predict HTTP/1.1" 200 -
+2025-05-08 20:24:49,148 - INFO - Loaded model: cnn_phishing_image_keras
+2025-05-08 20:24:51,884 - ERROR - Failed to load model rf_image_model_pickle: Model file D:\1. BaiTap\4. Python\codePhishingAI\models\rf_image_model.pkl does not exist
+2025-05-08 20:24:51,884 - ERROR - RF image prediction failed: Model file D:\1. BaiTap\4. Python\codePhishingAI\models\rf_image_model.pkl does not exist
+2025-05-08 20:24:51,884 - INFO - 127.0.0.1 - - [08/May/2025 20:24:51] "POST /predict HTTP/1.1" 200 -
+2025-05-08 20:26:21,132 - INFO - 127.0.0.1 - - [08/May/2025 20:26:21] "GET / HTTP/1.1" 200 -
+2025-05-08 20:26:21,159 - INFO - 127.0.0.1 - - [08/May/2025 20:26:21] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-05-08 20:26:21,162 - INFO - 127.0.0.1 - - [08/May/2025 20:26:21] "[36mGET /static/app.js HTTP/1.1[0m" 304 -
+2025-05-08 20:26:25,379 - ERROR - Failed to load model rf_image_model_pickle: Model file D:\1. BaiTap\4. Python\codePhishingAI\models\rf_image_model.pkl does not exist
+2025-05-08 20:26:25,379 - ERROR - RF image prediction failed: Model file D:\1. BaiTap\4. Python\codePhishingAI\models\rf_image_model.pkl does not exist
+2025-05-08 20:26:25,381 - INFO - 127.0.0.1 - - [08/May/2025 20:26:25] "POST /predict HTTP/1.1" 200 -
+2025-05-08 20:29:07,447 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.195:5001
+2025-05-08 20:29:07,451 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-08 20:29:08,610 - INFO - 127.0.0.1 - - [08/May/2025 20:29:08] "GET / HTTP/1.1" 200 -
+2025-05-08 20:29:08,803 - INFO - 127.0.0.1 - - [08/May/2025 20:29:08] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-05-08 20:29:08,840 - INFO - 127.0.0.1 - - [08/May/2025 20:29:08] "GET /static/app.js HTTP/1.1" 200 -
+2025-05-08 20:29:12,662 - INFO - Loaded model: cnn_phishing_image_keras
+2025-05-08 20:29:14,481 - ERROR - Error in /predict: cannot access local variable 'ensemble' where it is not associated with a value
+2025-05-08 20:29:14,481 - INFO - 127.0.0.1 - - [08/May/2025 20:29:14] "[35m[1mPOST /predict HTTP/1.1[0m" 500 -
+2025-05-08 20:29:49,623 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.195:5001
+2025-05-08 20:29:49,624 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-08 20:29:50,931 - INFO - 127.0.0.1 - - [08/May/2025 20:29:50] "GET / HTTP/1.1" 200 -
+2025-05-08 20:29:51,104 - INFO - 127.0.0.1 - - [08/May/2025 20:29:51] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-05-08 20:29:51,135 - INFO - 127.0.0.1 - - [08/May/2025 20:29:51] "GET /static/app.js HTTP/1.1" 200 -
+2025-05-08 20:29:55,370 - INFO - Loaded model: cnn_phishing_image_keras
+2025-05-08 20:29:58,021 - INFO - Image prediction for phishing_7.png: cnn_confidence=0.4486, result=Legitimate
+2025-05-08 20:29:58,021 - INFO - 127.0.0.1 - - [08/May/2025 20:29:58] "POST /predict HTTP/1.1" 200 -
+2025-05-08 20:30:02,762 - INFO - Image prediction for phishing_17.png: cnn_confidence=0.4412, result=Legitimate
+2025-05-08 20:30:02,762 - INFO - 127.0.0.1 - - [08/May/2025 20:30:02] "POST /predict HTTP/1.1" 200 -
+2025-05-08 20:30:05,777 - INFO - Image prediction for phishing_15.png: cnn_confidence=0.4604, result=Legitimate
+2025-05-08 20:30:05,778 - INFO - 127.0.0.1 - - [08/May/2025 20:30:05] "POST /predict HTTP/1.1" 200 -
+2025-05-08 20:30:10,611 - INFO - Image prediction for legitimate_16.png: cnn_confidence=0.4482, result=Legitimate
+2025-05-08 20:30:10,612 - INFO - 127.0.0.1 - - [08/May/2025 20:30:10] "POST /predict HTTP/1.1" 200 -
+2025-05-08 20:30:13,789 - INFO - Image prediction for legitimate_63.png: cnn_confidence=0.4457, result=Legitimate
+2025-05-08 20:30:13,790 - INFO - 127.0.0.1 - - [08/May/2025 20:30:13] "POST /predict HTTP/1.1" 200 -
+2025-05-08 20:30:17,021 - INFO - Image prediction for legitimate_32.png: cnn_confidence=0.4521, result=Legitimate
+2025-05-08 20:30:17,022 - INFO - 127.0.0.1 - - [08/May/2025 20:30:17] "POST /predict HTTP/1.1" 200 -
+2025-05-08 20:30:20,214 - INFO - Image prediction for legitimate_0.png: cnn_confidence=0.4407, result=Legitimate
+2025-05-08 20:30:20,215 - INFO - 127.0.0.1 - - [08/May/2025 20:30:20] "POST /predict HTTP/1.1" 200 -
+2025-05-08 20:30:22,394 - INFO - Image prediction for legitimate_18.png: cnn_confidence=0.4812, result=Legitimate
+2025-05-08 20:30:22,395 - INFO - 127.0.0.1 - - [08/May/2025 20:30:22] "POST /predict HTTP/1.1" 200 -
+2025-05-08 20:31:11,146 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.195:5001
+2025-05-08 20:31:11,146 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-08 20:31:12,140 - INFO - 127.0.0.1 - - [08/May/2025 20:31:12] "GET / HTTP/1.1" 200 -
+2025-05-08 20:31:12,317 - INFO - 127.0.0.1 - - [08/May/2025 20:31:12] "[36mGET /static/app.js HTTP/1.1[0m" 304 -
+2025-05-08 20:31:12,322 - INFO - 127.0.0.1 - - [08/May/2025 20:31:12] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-05-08 20:31:17,383 - INFO - Loaded model: cnn_phishing_image_keras
+2025-05-08 20:31:20,070 - INFO - Image prediction for legitimate_7.png: cnn_confidence=0.3816, result=Legitimate
+2025-05-08 20:31:20,070 - INFO - 127.0.0.1 - - [08/May/2025 20:31:20] "POST /predict HTTP/1.1" 200 -
+2025-05-08 20:31:25,302 - INFO - Image prediction for phishing_17.png: cnn_confidence=0.4150, result=Legitimate
+2025-05-08 20:31:25,302 - INFO - 127.0.0.1 - - [08/May/2025 20:31:25] "POST /predict HTTP/1.1" 200 -
+2025-05-08 20:31:28,169 - INFO - Image prediction for phishing_71.png: cnn_confidence=0.4195, result=Legitimate
+2025-05-08 20:31:28,186 - INFO - 127.0.0.1 - - [08/May/2025 20:31:28] "POST /predict HTTP/1.1" 200 -
+2025-05-08 20:31:31,463 - INFO - Image prediction for phishing_47.png: cnn_confidence=0.4040, result=Legitimate
+2025-05-08 20:31:31,463 - INFO - 127.0.0.1 - - [08/May/2025 20:31:31] "POST /predict HTTP/1.1" 200 -
+2025-05-08 20:31:34,074 - INFO - Image prediction for phishing_1.png: cnn_confidence=0.4216, result=Legitimate
+2025-05-08 20:31:34,076 - INFO - 127.0.0.1 - - [08/May/2025 20:31:34] "POST /predict HTTP/1.1" 200 -
+2025-05-08 20:31:36,667 - INFO - Image prediction for phishing_36.png: cnn_confidence=0.4212, result=Legitimate
+2025-05-08 20:31:36,667 - INFO - 127.0.0.1 - - [08/May/2025 20:31:36] "POST /predict HTTP/1.1" 200 -
+2025-05-08 20:31:39,182 - INFO - Image prediction for phishing_11.png: cnn_confidence=0.4086, result=Legitimate
+2025-05-08 20:31:39,182 - INFO - 127.0.0.1 - - [08/May/2025 20:31:39] "POST /predict HTTP/1.1" 200 -
+2025-05-08 20:31:42,145 - INFO - Image prediction for phishing_37.png: cnn_confidence=0.4221, result=Legitimate
+2025-05-08 20:31:42,145 - INFO - 127.0.0.1 - - [08/May/2025 20:31:42] "POST /predict HTTP/1.1" 200 -
+2025-05-08 20:31:45,737 - INFO - Image prediction for phishing_7.png: cnn_confidence=0.4065, result=Legitimate
+2025-05-08 20:31:45,737 - INFO - 127.0.0.1 - - [08/May/2025 20:31:45] "POST /predict HTTP/1.1" 200 -
+2025-05-08 20:31:52,114 - INFO - Image prediction for legitimate_16.png: cnn_confidence=0.4082, result=Legitimate
+2025-05-08 20:31:52,114 - INFO - 127.0.0.1 - - [08/May/2025 20:31:52] "POST /predict HTTP/1.1" 200 -
+2025-05-08 20:32:09,521 - INFO - Image prediction for phishing_181.png: cnn_confidence=0.4065, result=Legitimate
+2025-05-08 20:32:09,522 - INFO - 127.0.0.1 - - [08/May/2025 20:32:09] "POST /predict HTTP/1.1" 200 -
+2025-05-08 20:32:12,417 - INFO - Image prediction for legitimate_117.png: cnn_confidence=0.3964, result=Legitimate
+2025-05-08 20:32:12,417 - INFO - 127.0.0.1 - - [08/May/2025 20:32:12] "POST /predict HTTP/1.1" 200 -
+2025-05-08 20:32:15,006 - INFO - Image prediction for phishing_184.png: cnn_confidence=0.4225, result=Legitimate
+2025-05-08 20:32:15,006 - INFO - 127.0.0.1 - - [08/May/2025 20:32:15] "POST /predict HTTP/1.1" 200 -
+2025-05-08 20:32:17,254 - INFO - Image prediction for phishing_189.png: cnn_confidence=0.4050, result=Legitimate
+2025-05-08 20:32:17,256 - INFO - 127.0.0.1 - - [08/May/2025 20:32:17] "POST /predict HTTP/1.1" 200 -
+2025-05-08 20:32:55,955 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.195:5001
+2025-05-08 20:32:55,955 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-08 20:33:00,089 - INFO - 127.0.0.1 - - [08/May/2025 20:33:00] "GET / HTTP/1.1" 200 -
+2025-05-08 20:33:00,217 - INFO - 127.0.0.1 - - [08/May/2025 20:33:00] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-05-08 20:33:00,221 - INFO - 127.0.0.1 - - [08/May/2025 20:33:00] "[36mGET /static/app.js HTTP/1.1[0m" 304 -
+2025-05-08 20:33:05,845 - INFO - Loaded model: cnn_phishing_image_keras
+2025-05-08 20:33:08,194 - INFO - Image prediction for phishing_181.png: cnn_confidence=0.7371, result=Phishing
+2025-05-08 20:33:08,194 - INFO - 127.0.0.1 - - [08/May/2025 20:33:08] "POST /predict HTTP/1.1" 200 -
+2025-05-08 20:33:09,876 - INFO - Image prediction for phishing_181.png: cnn_confidence=0.7371, result=Phishing
+2025-05-08 20:33:09,876 - INFO - 127.0.0.1 - - [08/May/2025 20:33:09] "POST /predict HTTP/1.1" 200 -
+2025-05-08 20:33:13,358 - INFO - Image prediction for legitimate_120.png: cnn_confidence=0.7236, result=Phishing
+2025-05-08 20:33:13,359 - INFO - 127.0.0.1 - - [08/May/2025 20:33:13] "POST /predict HTTP/1.1" 200 -
+2025-05-08 20:33:15,734 - INFO - Image prediction for phishing_184.png: cnn_confidence=0.7228, result=Phishing
+2025-05-08 20:33:15,735 - INFO - 127.0.0.1 - - [08/May/2025 20:33:15] "POST /predict HTTP/1.1" 200 -
+2025-05-08 20:33:26,800 - INFO - Image prediction for legitimate_16.png: cnn_confidence=0.7281, result=Phishing
+2025-05-08 20:33:26,801 - INFO - 127.0.0.1 - - [08/May/2025 20:33:26] "POST /predict HTTP/1.1" 200 -
+2025-05-08 20:33:29,316 - INFO - Image prediction for legitimate_49.png: cnn_confidence=0.7229, result=Phishing
+2025-05-08 20:33:29,318 - INFO - 127.0.0.1 - - [08/May/2025 20:33:29] "POST /predict HTTP/1.1" 200 -
+2025-05-08 20:33:32,450 - INFO - Image prediction for legitimate_2.png: cnn_confidence=0.7226, result=Phishing
+2025-05-08 20:33:32,450 - INFO - 127.0.0.1 - - [08/May/2025 20:33:32] "POST /predict HTTP/1.1" 200 -
+2025-05-08 20:33:35,700 - INFO - Image prediction for legitimate_29.png: cnn_confidence=0.7315, result=Phishing
+2025-05-08 20:33:35,705 - INFO - 127.0.0.1 - - [08/May/2025 20:33:35] "POST /predict HTTP/1.1" 200 -
+2025-05-08 20:33:39,043 - INFO - Image prediction for legitimate_43.png: cnn_confidence=0.7436, result=Phishing
+2025-05-08 20:33:39,043 - INFO - 127.0.0.1 - - [08/May/2025 20:33:39] "POST /predict HTTP/1.1" 200 -
+2025-05-08 20:33:42,608 - INFO - Image prediction for legitimate_71.png: cnn_confidence=0.7314, result=Phishing
+2025-05-08 20:33:42,610 - INFO - 127.0.0.1 - - [08/May/2025 20:33:42] "POST /predict HTTP/1.1" 200 -
+2025-05-08 20:33:45,509 - INFO - Image prediction for legitimate_1.png: cnn_confidence=0.7262, result=Phishing
+2025-05-08 20:33:45,510 - INFO - 127.0.0.1 - - [08/May/2025 20:33:45] "POST /predict HTTP/1.1" 200 -
+2025-05-08 20:33:48,414 - INFO - Image prediction for legitimate_50.png: cnn_confidence=0.7359, result=Phishing
+2025-05-08 20:33:48,414 - INFO - 127.0.0.1 - - [08/May/2025 20:33:48] "POST /predict HTTP/1.1" 200 -
+2025-05-08 20:33:51,528 - INFO - Image prediction for legitimate_40.png: cnn_confidence=0.7280, result=Phishing
+2025-05-08 20:33:51,528 - INFO - 127.0.0.1 - - [08/May/2025 20:33:51] "POST /predict HTTP/1.1" 200 -
+2025-05-08 20:33:54,867 - INFO - Image prediction for legitimate_70.png: cnn_confidence=0.7229, result=Phishing
+2025-05-08 20:33:54,883 - INFO - 127.0.0.1 - - [08/May/2025 20:33:54] "POST /predict HTTP/1.1" 200 -
+2025-05-08 20:33:58,115 - INFO - Image prediction for legitimate_83.png: cnn_confidence=0.7253, result=Phishing
+2025-05-08 20:33:58,115 - INFO - 127.0.0.1 - - [08/May/2025 20:33:58] "POST /predict HTTP/1.1" 200 -
+2025-05-08 20:34:37,958 - INFO - Image prediction for legitimate_116.png: cnn_confidence=0.7260, result=Phishing
+2025-05-08 20:34:37,960 - INFO - 127.0.0.1 - - [08/May/2025 20:34:37] "POST /predict HTTP/1.1" 200 -
+2025-05-08 20:35:45,353 - INFO - Detected QR code: https://qr-code.click/i/67d8c1d5cd26c
+2025-05-08 20:35:46,035 - INFO - Loaded model: random_forest_URL_pickle
+2025-05-08 20:35:46,085 - INFO - 127.0.0.1 - - [08/May/2025 20:35:46] "POST /predict HTTP/1.1" 200 -
+2025-05-09 10:46:12,437 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.195:5001
+2025-05-09 10:46:12,437 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-09 10:46:24,336 - INFO - 127.0.0.1 - - [09/May/2025 10:46:24] "GET / HTTP/1.1" 200 -
+2025-05-09 10:46:24,509 - INFO - 127.0.0.1 - - [09/May/2025 10:46:24] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-05-09 10:46:24,533 - INFO - 127.0.0.1 - - [09/May/2025 10:46:24] "[36mGET /static/app.js HTTP/1.1[0m" 304 -
+2025-05-09 10:46:24,583 - INFO - 127.0.0.1 - - [09/May/2025 10:46:24] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-09 10:46:36,374 - INFO - Loaded model: cnn_phishing_image_final_keras
+2025-05-09 10:46:39,110 - INFO - Image prediction for phishing_17.png: cnn_confidence=0.3599, result=Legitimate
+2025-05-09 10:46:39,110 - INFO - 127.0.0.1 - - [09/May/2025 10:46:39] "POST /predict HTTP/1.1" 200 -
+2025-05-09 10:46:44,024 - INFO - Image prediction for phishing_17.png: cnn_confidence=0.3599, result=Legitimate
+2025-05-09 10:46:44,025 - INFO - 127.0.0.1 - - [09/May/2025 10:46:44] "POST /predict HTTP/1.1" 200 -
+2025-05-09 10:46:47,025 - INFO - Image prediction for phishing_19.png: cnn_confidence=0.3406, result=Legitimate
+2025-05-09 10:46:47,026 - INFO - 127.0.0.1 - - [09/May/2025 10:46:47] "POST /predict HTTP/1.1" 200 -
+2025-05-09 10:46:49,923 - INFO - Image prediction for phishing_6.png: cnn_confidence=0.3754, result=Legitimate
+2025-05-09 10:46:49,925 - INFO - 127.0.0.1 - - [09/May/2025 10:46:49] "POST /predict HTTP/1.1" 200 -
+2025-05-09 10:46:54,469 - INFO - Image prediction for legitimate_15.png: cnn_confidence=0.3360, result=Legitimate
+2025-05-09 10:46:54,470 - INFO - 127.0.0.1 - - [09/May/2025 10:46:54] "POST /predict HTTP/1.1" 200 -
+2025-05-09 10:46:59,381 - INFO - Image prediction for legitimate_4.png: cnn_confidence=0.3038, result=Legitimate
+2025-05-09 10:46:59,381 - INFO - 127.0.0.1 - - [09/May/2025 10:46:59] "POST /predict HTTP/1.1" 200 -
+2025-05-09 10:47:03,385 - INFO - Image prediction for legitimate_51.png: cnn_confidence=0.2974, result=Legitimate
+2025-05-09 10:47:03,386 - INFO - 127.0.0.1 - - [09/May/2025 10:47:03] "POST /predict HTTP/1.1" 200 -
+2025-05-09 11:10:35,668 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.195:5001
+2025-05-09 11:10:35,668 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-09 11:10:37,766 - INFO - 127.0.0.1 - - [09/May/2025 11:10:37] "GET / HTTP/1.1" 200 -
+2025-05-09 11:10:37,951 - INFO - 127.0.0.1 - - [09/May/2025 11:10:37] "[36mGET /static/app.js HTTP/1.1[0m" 304 -
+2025-05-09 11:10:37,953 - INFO - 127.0.0.1 - - [09/May/2025 11:10:37] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-05-09 11:10:42,524 - INFO - Loaded model: cnn_phishing_image_keras
+2025-05-09 11:10:44,783 - INFO - Image prediction for legitimate_4.png: cnn_confidence=0.3535, result=Legitimate
+2025-05-09 11:10:44,783 - INFO - 127.0.0.1 - - [09/May/2025 11:10:44] "POST /predict HTTP/1.1" 200 -
+2025-05-09 11:10:51,576 - INFO - Image prediction for phishing_16.png: cnn_confidence=0.3437, result=Legitimate
+2025-05-09 11:10:51,576 - INFO - 127.0.0.1 - - [09/May/2025 11:10:51] "POST /predict HTTP/1.1" 200 -
+2025-05-09 11:15:22,510 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.195:5001
+2025-05-09 11:15:22,510 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-09 11:15:47,044 - INFO - 127.0.0.1 - - [09/May/2025 11:15:47] "GET / HTTP/1.1" 200 -
+2025-05-09 11:15:47,182 - INFO - 127.0.0.1 - - [09/May/2025 11:15:47] "[36mGET /static/app.js HTTP/1.1[0m" 304 -
+2025-05-09 11:15:47,182 - INFO - 127.0.0.1 - - [09/May/2025 11:15:47] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-05-09 11:15:54,441 - INFO - Loaded model: cnn_phishing_image_keras
+2025-05-09 11:15:56,737 - INFO - Image prediction for phishing_16.png: cnn_confidence=0.1114, result=Legitimate, threshold=0.5
+2025-05-09 11:15:56,739 - INFO - 127.0.0.1 - - [09/May/2025 11:15:56] "POST /predict HTTP/1.1" 200 -
+2025-05-09 11:16:03,982 - INFO - Image prediction for legitimate_28.png: cnn_confidence=0.2325, result=Legitimate, threshold=0.5
+2025-05-09 11:16:03,982 - INFO - 127.0.0.1 - - [09/May/2025 11:16:03] "POST /predict HTTP/1.1" 200 -
+2025-05-09 11:16:07,727 - INFO - Image prediction for legitimate_62.png: cnn_confidence=0.5192, result=Phishing, threshold=0.5
+2025-05-09 11:16:07,727 - INFO - 127.0.0.1 - - [09/May/2025 11:16:07] "POST /predict HTTP/1.1" 200 -
+2025-05-09 11:16:10,247 - INFO - Image prediction for legitimate_47.png: cnn_confidence=0.0323, result=Legitimate, threshold=0.5
+2025-05-09 11:16:10,249 - INFO - 127.0.0.1 - - [09/May/2025 11:16:10] "POST /predict HTTP/1.1" 200 -
+2025-05-09 11:16:12,716 - INFO - Image prediction for legitimate_63.png: cnn_confidence=0.0626, result=Legitimate, threshold=0.5
+2025-05-09 11:16:12,717 - INFO - 127.0.0.1 - - [09/May/2025 11:16:12] "POST /predict HTTP/1.1" 200 -
+2025-05-09 11:16:15,950 - INFO - Image prediction for legitimate_102.png: cnn_confidence=0.0496, result=Legitimate, threshold=0.5
+2025-05-09 11:16:15,952 - INFO - 127.0.0.1 - - [09/May/2025 11:16:15] "POST /predict HTTP/1.1" 200 -
+2025-05-09 11:16:21,188 - INFO - Image prediction for phishing_88.png: cnn_confidence=0.9947, result=Phishing, threshold=0.5
+2025-05-09 11:16:21,189 - INFO - 127.0.0.1 - - [09/May/2025 11:16:21] "POST /predict HTTP/1.1" 200 -
+2025-05-09 11:16:25,265 - INFO - Image prediction for phishing_17.png: cnn_confidence=0.1114, result=Legitimate, threshold=0.5
+2025-05-09 11:16:25,267 - INFO - 127.0.0.1 - - [09/May/2025 11:16:25] "POST /predict HTTP/1.1" 200 -
+2025-05-09 11:16:28,874 - INFO - Image prediction for phishing_118.png: cnn_confidence=0.3591, result=Legitimate, threshold=0.5
+2025-05-09 11:16:28,877 - INFO - 127.0.0.1 - - [09/May/2025 11:16:28] "POST /predict HTTP/1.1" 200 -
+2025-05-09 11:16:33,108 - INFO - Image prediction for phishing_15.png: cnn_confidence=0.8094, result=Phishing, threshold=0.5
+2025-05-09 11:16:33,108 - INFO - 127.0.0.1 - - [09/May/2025 11:16:33] "POST /predict HTTP/1.1" 200 -
+2025-05-09 11:16:35,756 - INFO - Image prediction for phishing_30.png: cnn_confidence=0.9568, result=Phishing, threshold=0.5
+2025-05-09 11:16:35,760 - INFO - 127.0.0.1 - - [09/May/2025 11:16:35] "POST /predict HTTP/1.1" 200 -
+2025-05-09 11:16:38,495 - INFO - Image prediction for phishing_40.png: cnn_confidence=0.9742, result=Phishing, threshold=0.5
+2025-05-09 11:16:38,496 - INFO - 127.0.0.1 - - [09/May/2025 11:16:38] "POST /predict HTTP/1.1" 200 -
+2025-05-09 11:16:45,132 - INFO - Image prediction for phishing_92.png: cnn_confidence=0.4298, result=Legitimate, threshold=0.5
+2025-05-09 11:16:45,132 - INFO - 127.0.0.1 - - [09/May/2025 11:16:45] "POST /predict HTTP/1.1" 200 -
+2025-05-09 11:16:50,377 - INFO - Image prediction for phishing_90.png: cnn_confidence=0.8597, result=Phishing, threshold=0.5
+2025-05-09 11:16:50,378 - INFO - 127.0.0.1 - - [09/May/2025 11:16:50] "POST /predict HTTP/1.1" 200 -
+2025-05-09 11:16:54,975 - INFO - Image prediction for phishing_58.png: cnn_confidence=0.8434, result=Phishing, threshold=0.5
+2025-05-09 11:16:54,975 - INFO - 127.0.0.1 - - [09/May/2025 11:16:54] "POST /predict HTTP/1.1" 200 -
+2025-05-09 11:16:59,446 - INFO - Image prediction for phishing_162.png: cnn_confidence=0.5397, result=Phishing, threshold=0.5
+2025-05-09 11:16:59,448 - INFO - 127.0.0.1 - - [09/May/2025 11:16:59] "POST /predict HTTP/1.1" 200 -
+2025-05-09 11:17:02,413 - INFO - Image prediction for phishing_100.png: cnn_confidence=0.8540, result=Phishing, threshold=0.5
+2025-05-09 11:17:02,415 - INFO - 127.0.0.1 - - [09/May/2025 11:17:02] "POST /predict HTTP/1.1" 200 -
+2025-05-09 11:18:35,200 - INFO - Image prediction for Anh_chup_man_hinh_2025-05-09_111801.png: cnn_confidence=0.1414, result=Legitimate, threshold=0.5
+2025-05-09 11:18:35,200 - INFO - 127.0.0.1 - - [09/May/2025 11:18:35] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:25:23,684 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.195:5001
+2025-05-09 17:25:23,684 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-09 17:25:25,722 - INFO - 127.0.0.1 - - [09/May/2025 17:25:25] "GET / HTTP/1.1" 200 -
+2025-05-09 17:25:25,887 - INFO - 127.0.0.1 - - [09/May/2025 17:25:25] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-05-09 17:25:25,911 - INFO - 127.0.0.1 - - [09/May/2025 17:25:25] "[36mGET /static/app.js HTTP/1.1[0m" 304 -
+2025-05-09 17:25:25,993 - INFO - 127.0.0.1 - - [09/May/2025 17:25:25] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-09 17:25:40,271 - INFO - Loaded model: random_forest_URL_pickle
+2025-05-09 17:25:40,307 - INFO - 127.0.0.1 - - [09/May/2025 17:25:40] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:27:18,805 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.195:5001
+2025-05-09 17:27:18,805 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-09 17:27:23,245 - INFO - 127.0.0.1 - - [09/May/2025 17:27:23] "GET / HTTP/1.1" 200 -
+2025-05-09 17:27:23,371 - INFO - 127.0.0.1 - - [09/May/2025 17:27:23] "[36mGET /static/app.js HTTP/1.1[0m" 304 -
+2025-05-09 17:27:23,374 - INFO - 127.0.0.1 - - [09/May/2025 17:27:23] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-05-09 17:27:26,002 - INFO - Loaded model: random_forest_URL_pickle
+2025-05-09 17:27:26,039 - INFO - 127.0.0.1 - - [09/May/2025 17:27:26] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:28:08,178 - INFO - 127.0.0.1 - - [09/May/2025 17:28:08] "GET / HTTP/1.1" 200 -
+2025-05-09 17:28:08,204 - INFO - 127.0.0.1 - - [09/May/2025 17:28:08] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-05-09 17:28:08,207 - INFO - 127.0.0.1 - - [09/May/2025 17:28:08] "GET /static/app.js HTTP/1.1" 200 -
+2025-05-09 17:28:19,163 - INFO - 127.0.0.1 - - [09/May/2025 17:28:19] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:28:56,375 - INFO - 127.0.0.1 - - [09/May/2025 17:28:56] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:31:24,353 - INFO - Loaded model: cnn_phishing_image_keras
+2025-05-09 17:31:26,917 - INFO - Image prediction for phishing_90.png: cnn_confidence=0.8597, result=Phishing, threshold=0.5
+2025-05-09 17:31:26,917 - INFO - 127.0.0.1 - - [09/May/2025 17:31:26] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:32:16,261 - INFO - Image prediction for Anh_chup_man_hinh_2025-05-09_111801.png: cnn_confidence=0.1414, result=Legitimate, threshold=0.5
+2025-05-09 17:32:16,261 - INFO - 127.0.0.1 - - [09/May/2025 17:32:16] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:32:47,895 - INFO - Extracted headers: {'Delivered-To': 'n22dcat019@student.ptithcm.edu.vn', 'Received': 'from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])        by mx.google.com with SMTPS id d9443c01a7336-22e0bb27ba3sor69194915ad.8.2025.05.06.00.58.11        for <d22cqat01-n@student.ptithcm.edu.vn>        (Google Transport Security);        Tue, 06 May 2025 00:58:11 -0700 (PDT)', 'X-Forwarded-Encrypted': 'i=1; AJvYcCXQ5XYW0rMlPFY5b/PVC/PE4HZ52UU9thD0x70cU/7XMoIx2AiUIi8l11Qz8i3MY1c3/bHLr4ROPHPrSQ==@student.ptithcm.edu.vn', 'X-Received': 'by 2002:a17:90b:560f:b0:2ff:5a9d:9390 with SMTP id 98e67ed59e1d1-30a6198b56emr15381174a91.8.1746518291037; Tue, 06 May 2025 00:58:11 -0700 (PDT)', 'ARC-Seal': 'i=1; a=rsa-sha256; t=1746518291; cv=none;        d=google.com; s=arc-20240605;        b=VjxxQtD1TmGSFC3GhRw1tp64f8M4WVdUfWT0FfgD6knFkjzc2nqEDGPK8W7jwJoSxC         DjdAa1a5xt1iLcKMxDYpyDBsbI66aSbGIGoyqOVjM08YeWe8RuJJjmOl888CK8TJYG5m         uUNXza1kPFBSKjNX+7X+VfFBc/AUtbBd9bf/Lzqa3nfPRznKUwCWsPWt6eLGOC7KhCY3         jiMw4Zo8AZjrylNMLj16ErK1N0uTbKQzVdriMFKlYMHrLX6WhTlsjoJfcmIm32KAEfE1         qXc1oWifq8kRq3Kdr/h2pYWUuWKKbemts9sxfbKKG4kpq8hVoiqlK7z5wxdpdQaVkls4         TRBw==', 'ARC-Message-Signature': 'i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;        h=to:subject:message-id:date:from:mime-version:dkim-signature;        bh=3edOMKHWfcfe1pXLKiFV5FYmRBOeRlfibZ41g9gSMdU=;        fh=h1RLwvVFbQoxjEkQvdplgAWJGn0QkccqWNbOhPfnurA=;        b=OAaKYAvQGUZCIxx9P6Bw/O6iAWSVlxFGxmtQ+c1RAi+C0rcrYee/e6bOVC0ZBwbaMD         Ydq6VqRTXULMxjU58tWEUQ9NoC6zaeCIUlSo4Z/EjPRVrwYfB9ARdWug+TPHYRA/kQhY         f4O8AdWLRUWLontlVKbCO0DLxGrMSB/sRsOndqsDrErvWjgiW2l6FwSSnZ8VL8FaF923         Kz0jQKzUi7Yqf4kWVCfPVCnjOL20LdSW7J8reetLO4ArBUsxnorQkm3R/5yh784HIKcL         lipm/ui7pOemZzRATT0NMW8zrXGoSJ2IZZZxkHEQY190mH/VAn0xMEgHqzJVOOIMEm/H         wkmQ==;        dara=google.com', 'ARC-Authentication-Results': 'i=1; mx.google.com;       dkim=pass header.i=@ptithcm-edu-vn.20230601.gappssmtp.com header.s=20230601 header.b=J5sdwpqu;       spf=none (google.com: nhatrang@ptithcm.edu.vn does not designate permitted sender hosts) smtp.mailfrom=nhatrang@ptithcm.edu.vn;       dara=pass header.i=@student.ptithcm.edu.vn', 'Return-Path': '<d22cqat01-n+bncBCOJDXFM2QMBBFEC47AAMGQESZEO5KQ@student.ptithcm.edu.vn>', 'Received-SPF': 'none (google.com: nhatrang@ptithcm.edu.vn does not designate permitted sender hosts) client-ip=209.85.220.41;', 'Authentication-Results': 'mx.google.com;       dkim=pass header.i=@student-ptithcm-edu-vn.20230601.gappssmtp.com header.s=20230601 header.b=p2eIA3Iu;       arc=pass (i=2 dkim=pass dkdomain=ptithcm-edu-vn.20230601.gappssmtp.com);       spf=none (google.com: d22cqat01-n+bncbcojdxfm2qmbbfec47aamgqeszeo5kq@student.ptithcm.edu.vn does not designate permitted sender hosts) smtp.mailfrom=d22cqat01-n+bncBCOJDXFM2QMBBFEC47AAMGQESZEO5KQ@student.ptithcm.edu.vn;       dara=pass header.i=@student.ptithcm.edu.vn', 'DKIM-Signature': 'v=1; a=rsa-sha256; c=relaxed/relaxed;        d=student-ptithcm-edu-vn.20230601.gappssmtp.com; s=20230601; t=1746518293; x=1747123093; darn=student.ptithcm.edu.vn;        h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post         :list-id:mailing-list:precedence:x-original-authentication-results         :x-original-sender:to:subject:message-id:date:from:mime-version:from         :to:cc:subject:date:message-id:reply-to;        bh=3edOMKHWfcfe1pXLKiFV5FYmRBOeRlfibZ41g9gSMdU=;        b=p2eIA3IuHBKzwjFEYYG2NYkmrpCcjxbon/Ifuooh93viOuiZn2hwP4s9LJr8+AxFcI         UhMC8DWWIazYZzFF4KCflyN+FfM03xMPCfSNm+99y9DPyDKWaKsgAZxJ/U4vvwZy6uRC         5IvKhY6MHcmZh6zBS/bN4TTEV+qLMjotCNrIFvEvF9PI6VxV28EtzYujXfrBYeDffOed         cSyDdYhWrVdSKRDRjPeBbEik2tC84iYJ5hgj8VMJbIlTwvPHZsbo85AW+Ns0F4PCNsRt         KCqd6ViXWYscuGTlpuvZoAcQ4N/moSERyZrk5Hm5aqo80cfvL73yytuccsmsWtMsd4eh         yS8w==', 'X-Google-DKIM-Signature': 'v=1; a=rsa-sha256; c=relaxed/relaxed;        d=1e100.net; s=20230601; t=1746518293; x=1747123093;        h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post         :x-spam-checked-in-group:list-id:mailing-list:precedence         :x-original-authentication-results:x-original-sender:to:subject         :message-id:date:from:mime-version:x-beenthere:x-gm-message-state         :from:to:cc:subject:date:message-id:reply-to;        bh=3edOMKHWfcfe1pXLKiFV5FYmRBOeRlfibZ41g9gSMdU=;        b=cMGjr03hNx1aAwQNskwwmvTp3lWwJUqHLDnfg3LB6oW+uNbYotJoywFWGigY/Whg7i         ZMaHiY+P9JVCU3+hwanCXVmjUHfCLSFVLSNNU9BUmf9eomu0sWj8m66TiEl4K/zWx1xW         svs83peRlIqtM0YPd9VWZujy2Fzxad5KY02t/2ygYhmJMV94LmGRVkHL5Fah4r5gWGBh         d+sdRmB2QAJ8FtIfZmgy1Sc5paOJD20oerDGYZw5pM3ljYWd19EvbjwQSZRxofLgfmro         SYm16CGCwPSHp7Dn+mKzXIONQs7+CyB4sfwCh0iOsdwR7xCa+GX7UsvipycojJA5v1td         mABA==', 'X-Gm-Message-State': 'AOJu0YyZrvtR2hLXWTGI0lgJ4oo4/urINTaequ+4o7OlQtC+EKS2afAS\t1nrfpftE7kSEjxGFIYcFyBsH9F0g4EMZtWTvuGpCXJWOpKy8oycA4RQYbAeoYd4AWw==', 'X-Google-Smtp-Source': 'AGHT+IGV6txGTDIurWDjx8iwu4i95xEQwgcUSMpld5KjBkVf7+Pt3yN02pzHZMwqzun1+xMr7kG1xg==', 'X-BeenThere': 'd22cqat01-n@student.ptithcm.edu.vn; h=AVT/gBGVb7i8D/6ldCqu/MQHwDhRN+cP/Fea+2R1eujK2yqwBA==', 'X-Gm-Gg': 'ASbGncvHzF239QQJJsqmIu/4RgbRljQ8HimJ6l0wagcBxMthV2uQAfo6CYQgW9ERhb5\tBAyKePY1karhAS+L2oDCP94W3T3XJRaQZP2VnKFE1XyQ9hjE/6AkxT3BBzuR+DTLvuyeU1RI1Pf\timgMghWk0YwI2rVhiKMXsPvA==', 'MIME-Version': '1.0', 'From': 'Nguyen Le Nha Trang <nhatrang@ptithcm.edu.vn>', 'Date': 'Tue, 06 May 2025 14:57:56 +0700', 'X-Gm-Features': 'ATxdqUEsFLh0ZpoZ2HZlla5oNCOFlppFhaVzSaDrAb_UlFlSfHoOMKgHWTjuIqU', 'Message-ID': '<CAF5Ab3PXxVjK8nvEBrHQH+ZLmtqTHRc=KO9TxNqNqOc+AHZAPw@mail.gmail.com>', 'Subject': 'KMS Technology - MoveIT 2025', 'To': 'd21cqat01-n@student.ptithcm.edu.vn, d21cqpt01-n@student.ptithcm.edu.vn, d21cqcn01-n@student.ptithcm.edu.vn, d21cqcn02-n@student.ptithcm.edu.vn, e21cqcn01-n@student.ptithcm.edu.vn, d22cqat01-n@student.ptithcm.edu.vn, d22cqpt01-n@student.ptithcm.edu.vn, d22cqcn01-n@student.ptithcm.edu.vn, d22cqcn02-n@student.ptithcm.edu.vn, e22cqcn01-n@student.ptithcm.edu.vn, e22cqcn02-n@student.ptithcm.edu.vn, d23cqat01-n@student.ptithcm.edu.vn, d23cqpt01-n@student.ptithcm.edu.vn, d23cqpt02-n@student.ptithcm.edu.vn, d23cqcn01-n@student.ptithcm.edu.vn, d23cqcn02-n@student.ptithcm.edu.vn, d23cqcn03-n@student.ptithcm.edu.vn, e23cqce01-n@student.ptithcm.edu.vn, d23vhcn01-n@student.ptithcm.edu.vn, d24cqcn01-n@student.ptithcm.edu.vn, d24cqcn02-n@student.ptithcm.edu.vn, d24cqpt01-n@student.ptithcm.edu.vn, d24cqpt02-n@student.ptithcm.edu.vn, e24cqce01-n@student.ptithcm.edu.vn, e24cqce02-n@student.ptithcm.edu.vn, d24cqat01-n@student.ptithcm.edu.vn', 'Content-Type': 'multipart/alternative; boundary="00000000000054d01c063472fa02"', 'X-Original-Sender': 'nhatrang@ptithcm.edu.vn', 'X-Original-Authentication-Results': 'mx.google.com;       dkim=pass header.i=@ptithcm-edu-vn.20230601.gappssmtp.com header.s=20230601 header.b=J5sdwpqu;       spf=none (google.com: nhatrang@ptithcm.edu.vn does not designate permitted sender hosts) smtp.mailfrom=nhatrang@ptithcm.edu.vn;       dara=pass header.i=@student.ptithcm.edu.vn', 'Precedence': 'list', 'Mailing-list': 'list d22cqat01-n@student.ptithcm.edu.vn; contact d22cqat01-n+owners@student.ptithcm.edu.vn', 'List-ID': '<d22cqat01-n.student.ptithcm.edu.vn>', 'X-Spam-Checked-In-Group': 'd22cqat01-n@student.ptithcm.edu.vn', 'X-Google-Group-Id': '134060503702', 'List-Post': '<https://groups.google.com/a/student.ptithcm.edu.vn/group/d22cqat01-n/post>, <mailto:d22cqat01-n@student.ptithcm.edu.vn>', 'List-Help': '<https://support.google.com/a/student.ptithcm.edu.vn/bin/topic.py?topic=25838>, <mailto:d22cqat01-n+help@student.ptithcm.edu.vn>', 'List-Archive': '<https://groups.google.com/a/student.ptithcm.edu.vn/group/d22cqat01-n/>', 'List-Subscribe': '<https://groups.google.com/a/student.ptithcm.edu.vn/group/d22cqat01-n/subscribe>, <mailto:d22cqat01-n+subscribe@student.ptithcm.edu.vn>', 'List-Unsubscribe': '<mailto:googlegroups-manage+134060503702+unsubscribe@googlegroups.com>, <https://groups.google.com/a/student.ptithcm.edu.vn/group/d22cqat01-n/subscribe>'}
+2025-05-09 17:32:47,910 - INFO - Extracted email features: {'hops': 4, 'missing_subject': 0, 'missing_to': 0, 'missing_content-type': 0, 'missing_mime-version': 0, 'missing_x-mailer': 1, 'missing_delivered-to': 0, 'missing_list-unsubscribe': 0, 'missing_received-spf': 0, 'missing_reply-to': 1, 'str_from_chevron': 1, 'str_to_chevron': 0, 'str_message-ID_dollar': 0, 'str_return-path_bounce': 0, 'str_content-type_texthtml': 0, 'domain_match_from_return-path': 0, 'domain_match_to_from': 0, 'domain_match_to_message-id': 0, 'domain_match_from_reply-to': 0, 'domain_match_message-id_from': 0, 'length_from': 45, 'num_recipients_to': 26, 'num_recipients_cc': 0, 'time_zone': 1, 'day_of_week': 1, 'span_time': 0, 'date_comp_date_received': 1, 'content-encoding-val': 0, 'received_str_forged': 1, 'number_replies': 0}
+2025-05-09 17:32:47,970 - INFO - Loaded model: random_forest_email_pickle
+2025-05-09 17:32:47,980 - INFO - Prediction for KMS_Technology_-_MoveIT_2025.eml: rf_confidence=0.0800, result=Legitimate
+2025-05-09 17:32:47,981 - INFO - 127.0.0.1 - - [09/May/2025 17:32:47] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:33:09,457 - INFO - Extracted headers: {'Return-Path': '<mikeedo@emailisfun.com>', 'Delivered-To': 'yyyy@netnoteinc.com', 'Received': 'from mail3.emailisfun.com by gw02 with ESMTP; Tue,    26 Jun 2001 23:01:39 -0400', 'Message-Id': '<00007409198a$00006e26$00006c63@mail3.emailisfun.com>', 'To': 'mikeedo@emailisfun.com', 'From': 'mikeedo@emailisfun.com', 'Subject': 'You Won The First Round! claim#\t9462               27747', 'Date': 'Tue, 26 Jun 2001 23:01:34 -0400', 'MIME-Version': '1.0', 'Content-Transfer-Encoding': 'quoted-printable', 'X-Priority': '3', 'X-Msmail-Priority': 'Normal', 'Reply-To': 'wjilknmv@polbox.com', 'X-Originalarrivaltime': '27 Jun 2001 03:59:00.0584 (UTC) FILETIME=[7F62F680:    01C0FEBD]'}
+2025-05-09 17:33:09,457 - INFO - Extracted email features: {'hops': 3, 'missing_subject': 0, 'missing_to': 0, 'missing_content-type': 1, 'missing_mime-version': 0, 'missing_x-mailer': 1, 'missing_delivered-to': 0, 'missing_list-unsubscribe': 1, 'missing_received-spf': 1, 'missing_reply-to': 0, 'str_from_chevron': 0, 'str_to_chevron': 0, 'str_message-ID_dollar': 0, 'str_return-path_bounce': 0, 'str_content-type_texthtml': 0, 'domain_match_from_return-path': 1, 'domain_match_to_from': 1, 'domain_match_to_message-id': 0, 'domain_match_from_reply-to': 0, 'domain_match_message-id_from': 0, 'length_from': 22, 'num_recipients_to': 1, 'num_recipients_cc': 0, 'time_zone': 1, 'day_of_week': 1, 'span_time': 3310.0, 'date_comp_date_received': 1, 'content-encoding-val': 1, 'received_str_forged': 0, 'number_replies': 0}
+2025-05-09 17:33:09,488 - INFO - Prediction for phishing_email_1534.eml: rf_confidence=0.6600, result=Phishing
+2025-05-09 17:33:09,488 - INFO - 127.0.0.1 - - [09/May/2025 17:33:09] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:33:13,419 - INFO - Extracted headers: {'Return-Path': '<>', 'Delivered-To': 'yyyy@netnoteinc.com', 'Received': 'from TmpStr (slip-32-102-60-10.fl.us.prserv.net [32.102.60.10])    by mail.netnoteinc.com (Postfix) with SMTP id BA5DD130028 for    <jm@netnoteinc.com>; Tue, 26 Jun 2001 13:04:05 +0100 (IST)', 'Reply-To': '<>', 'From': '<>', 'To': 'yyyy@netnoteinc.com', 'Organization': '', 'X-Priority': '1', 'X-Msmail-Priority': 'High', 'Subject': 'READ---SHIPPING INSTRUTIONS--FOR YOUR ORDER', 'Sender': '<>', 'MIME-Version': '1.0', 'Date': 'Tue, 26 Jun 2001 08:00:31 -0400', 'Message-Id': '<20010626120405.BA5DD130028@mail.netnoteinc.com>'}
+2025-05-09 17:33:13,422 - INFO - Extracted email features: {'hops': 1, 'missing_subject': 0, 'missing_to': 0, 'missing_content-type': 1, 'missing_mime-version': 0, 'missing_x-mailer': 1, 'missing_delivered-to': 0, 'missing_list-unsubscribe': 1, 'missing_received-spf': 1, 'missing_reply-to': 0, 'str_from_chevron': 0, 'str_to_chevron': 0, 'str_message-ID_dollar': 0, 'str_return-path_bounce': 0, 'str_content-type_texthtml': 0, 'domain_match_from_return-path': 0, 'domain_match_to_from': 0, 'domain_match_to_message-id': 0, 'domain_match_from_reply-to': 0, 'domain_match_message-id_from': 0, 'length_from': 2, 'num_recipients_to': 1, 'num_recipients_cc': 0, 'time_zone': 1, 'day_of_week': 1, 'span_time': 214.0, 'date_comp_date_received': 1, 'content-encoding-val': 0, 'received_str_forged': 0, 'number_replies': 0}
+2025-05-09 17:33:13,422 - INFO - Prediction for phishing_email_1533.eml: rf_confidence=0.7000, result=Phishing
+2025-05-09 17:33:13,422 - INFO - 127.0.0.1 - - [09/May/2025 17:33:13] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:33:20,030 - INFO - Extracted headers: {'Return-Path': '<bell1hmed@yahoo.ca>', 'Delivered-To': 'zzzz@localhost.spamassassin.taint.org', 'Received': 'from n2now709.com ([64.86.155.148]) by dogma.slashnull.org    (8.11.6/8.11.6) with SMTP id g7MKV5Z23408 for <zzzz@jmason.org>;    Thu, 22 Aug 2002 21:31:06 +0100', 'Message-Id': '<200208222031.g7MKV5Z23408@dogma.slashnull.org>', 'From': 'Dr Bello Ahmed <bell1hmed@yahoo.ca>', 'Reply-To': 'bell1hmed@yahoo.ca', 'Date': 'Thu, 22 Aug 2002 13:31:18 -0700', 'Subject': 'Relationship', 'X-Mailer': 'Microsoft Outlook Express 5.00.2919.6900 DM', 'MIME-Version': '1.0', 'Content-Type': 'multipart/mixed; boundary="===_SecAtt_000_1fheucnqggtggp"', 'To': 'undisclosed-recipients:;'}
+2025-05-09 17:33:20,033 - INFO - Extracted email features: {'hops': 3, 'missing_subject': 0, 'missing_to': 0, 'missing_content-type': 0, 'missing_mime-version': 0, 'missing_x-mailer': 0, 'missing_delivered-to': 0, 'missing_list-unsubscribe': 1, 'missing_received-spf': 1, 'missing_reply-to': 0, 'str_from_chevron': 1, 'str_to_chevron': 0, 'str_message-ID_dollar': 0, 'str_return-path_bounce': 0, 'str_content-type_texthtml': 0, 'domain_match_from_return-path': 1, 'domain_match_to_from': 0, 'domain_match_to_message-id': 0, 'domain_match_from_reply-to': 1, 'domain_match_message-id_from': 0, 'length_from': 35, 'num_recipients_to': 1, 'num_recipients_cc': 0, 'time_zone': 1, 'day_of_week': 3, 'span_time': 49237.0, 'date_comp_date_received': 1, 'content-encoding-val': 0, 'received_str_forged': 0, 'number_replies': 0}
+2025-05-09 17:33:20,039 - INFO - Prediction for phishing_email_523.eml: rf_confidence=0.7200, result=Phishing
+2025-05-09 17:33:20,039 - INFO - 127.0.0.1 - - [09/May/2025 17:33:20] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:33:23,021 - INFO - Extracted headers: {'Return-Path': '<>', 'Delivered-To': 'yyyy@netnoteinc.com', 'Received': 'from TmpStr (slip-32-102-60-10.fl.us.prserv.net [32.102.60.10])    by mail.netnoteinc.com (Postfix) with SMTP id BA5DD130028 for    <jm@netnoteinc.com>; Tue, 26 Jun 2001 13:04:05 +0100 (IST)', 'Reply-To': '<>', 'From': '<>', 'To': 'yyyy@netnoteinc.com', 'Organization': '', 'X-Priority': '1', 'X-Msmail-Priority': 'High', 'Subject': 'READ---SHIPPING INSTRUTIONS--FOR YOUR ORDER', 'Sender': '<>', 'MIME-Version': '1.0', 'Date': 'Tue, 26 Jun 2001 08:00:31 -0400', 'Message-Id': '<20010626120405.BA5DD130028@mail.netnoteinc.com>'}
+2025-05-09 17:33:23,024 - INFO - Extracted email features: {'hops': 1, 'missing_subject': 0, 'missing_to': 0, 'missing_content-type': 1, 'missing_mime-version': 0, 'missing_x-mailer': 1, 'missing_delivered-to': 0, 'missing_list-unsubscribe': 1, 'missing_received-spf': 1, 'missing_reply-to': 0, 'str_from_chevron': 0, 'str_to_chevron': 0, 'str_message-ID_dollar': 0, 'str_return-path_bounce': 0, 'str_content-type_texthtml': 0, 'domain_match_from_return-path': 0, 'domain_match_to_from': 0, 'domain_match_to_message-id': 0, 'domain_match_from_reply-to': 0, 'domain_match_message-id_from': 0, 'length_from': 2, 'num_recipients_to': 1, 'num_recipients_cc': 0, 'time_zone': 1, 'day_of_week': 1, 'span_time': 214.0, 'date_comp_date_received': 1, 'content-encoding-val': 0, 'received_str_forged': 0, 'number_replies': 0}
+2025-05-09 17:33:23,026 - INFO - Prediction for phishing_email_1533.eml: rf_confidence=0.7000, result=Phishing
+2025-05-09 17:33:23,026 - INFO - 127.0.0.1 - - [09/May/2025 17:33:23] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:34:28,821 - INFO - Extracted headers: {'Return-Path': '<teresamontgomery@earthlink.net>', 'Delivered-To': 'yyyy@localhost.labs.netnoteinc.com', 'Received': 'from smtp0147.mail.yahoo.com (ip503ca1af.speed.planet.nl    [80.60.161.175]) by server-nt4.mairie-bezons.fr with SMTP (Microsoft    Exchange Internet Mail Service Version 5.5.1960.3) id KM70M961;    Mon, 6 May 2002 22:57:47 +0200', 'Message-Id': '<200205071208.g47C8JD12826@mandark.labs.netnoteinc.com>', 'Reply-To': 'teresamontgomery@earthlink.net', 'From': 'teresamontgomery512517@earthlink.net', 'To': 'yyyy@neteze.com', 'Cc': 'yyyy@netmagic.net, yyyy@netmore.net, yyyy@netnoteinc.com, jm@netrevolution.com, jm@netset.com, jm@netunlimited.net, jm@netvigator.com', 'Subject': 'discounted mortgage broker 512517', 'MIME-Version': '1.0', 'Date': 'Sat, 23 Jun 2001 13:08:25 -0700', 'Content-Type': 'text/html; charset="iso-8859-1"'}
+2025-05-09 17:34:28,824 - INFO - Extracted email features: {'hops': 5, 'missing_subject': 0, 'missing_to': 0, 'missing_content-type': 0, 'missing_mime-version': 0, 'missing_x-mailer': 1, 'missing_delivered-to': 0, 'missing_list-unsubscribe': 1, 'missing_received-spf': 1, 'missing_reply-to': 0, 'str_from_chevron': 0, 'str_to_chevron': 0, 'str_message-ID_dollar': 0, 'str_return-path_bounce': 0, 'str_content-type_texthtml': 1, 'domain_match_from_return-path': 1, 'domain_match_to_from': 0, 'domain_match_to_message-id': 0, 'domain_match_from_reply-to': 1, 'domain_match_message-id_from': 0, 'length_from': 36, 'num_recipients_to': 1, 'num_recipients_cc': 7, 'time_zone': 1, 'day_of_week': 5, 'span_time': 32369062.0, 'date_comp_date_received': 1, 'content-encoding-val': 0, 'received_str_forged': 0, 'number_replies': 0}
+2025-05-09 17:34:28,832 - INFO - Prediction for phishing_email_1526.eml: rf_confidence=0.7000, result=Phishing
+2025-05-09 17:34:28,832 - INFO - 127.0.0.1 - - [09/May/2025 17:34:28] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:34:33,627 - INFO - Extracted headers: {'Return-Path': 'sales@outsrc-em.com', 'Delivery-Date': 'Thu Jun 20 20:08:33 2002', 'Received': 'from outsrc-em.com ([166.70.149.104]) by dogma.slashnull.org    (8.11.6/8.11.6) with SMTP id g5KJ8WI08701 for <jm@jmason.org>;    Thu, 20 Jun 2002 20:08:32 +0100', 'Message-Id': '<200206201908.g5KJ8WI08701@dogma.slashnull.org>', 'From': 'Outsource Sales <sales@outsrc-em.com>', 'To': '"yyyy@spamassassin.taint.org" <yyyy@spamassassin.taint.org>', 'Subject': 'New Product Announcement', 'Sender': 'Outsource Sales <sales@outsrc-em.com>', 'MIME-Version': '1.0', 'Content-Type': 'text/plain; charset="ISO-8859-1"', 'Date': 'Fri, 03 Jan 1997 17:24:47 -0700', 'Reply-To': 'Outsource Sales <sales@outsrc-em.com>', 'Content-Transfer-Encoding': '8bit', 'X-Keywords': ''}
+2025-05-09 17:34:33,631 - INFO - Extracted email features: {'hops': 1, 'missing_subject': 0, 'missing_to': 0, 'missing_content-type': 0, 'missing_mime-version': 0, 'missing_x-mailer': 1, 'missing_delivered-to': 1, 'missing_list-unsubscribe': 1, 'missing_received-spf': 1, 'missing_reply-to': 0, 'str_from_chevron': 1, 'str_to_chevron': 1, 'str_message-ID_dollar': 0, 'str_return-path_bounce': 0, 'str_content-type_texthtml': 0, 'domain_match_from_return-path': 1, 'domain_match_to_from': 0, 'domain_match_to_message-id': 0, 'domain_match_from_reply-to': 1, 'domain_match_message-id_from': 0, 'length_from': 37, 'num_recipients_to': 1, 'num_recipients_cc': 0, 'time_zone': 1, 'day_of_week': 4, 'span_time': 172262625.0, 'date_comp_date_received': 1, 'content-encoding-val': 3, 'received_str_forged': 0, 'number_replies': 0}
+2025-05-09 17:34:33,638 - INFO - Prediction for phishing_email_1510.eml: rf_confidence=0.9400, result=Phishing
+2025-05-09 17:34:33,638 - INFO - 127.0.0.1 - - [09/May/2025 17:34:33] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:35:06,261 - INFO - Loaded model: random_forest_file_pickle
+2025-05-09 17:35:06,266 - INFO - 127.0.0.1 - - [09/May/2025 17:35:06] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:35:11,503 - INFO - 127.0.0.1 - - [09/May/2025 17:35:11] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:35:14,769 - INFO - 127.0.0.1 - - [09/May/2025 17:35:14] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:35:17,524 - INFO - 127.0.0.1 - - [09/May/2025 17:35:17] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:35:20,578 - INFO - 127.0.0.1 - - [09/May/2025 17:35:20] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:35:24,344 - INFO - 127.0.0.1 - - [09/May/2025 17:35:24] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:35:28,519 - INFO - 127.0.0.1 - - [09/May/2025 17:35:28] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:35:32,761 - INFO - 127.0.0.1 - - [09/May/2025 17:35:32] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:35:36,052 - INFO - 127.0.0.1 - - [09/May/2025 17:35:36] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:36:10,271 - INFO - 127.0.0.1 - - [09/May/2025 17:36:10] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:36:48,407 - WARNING - incorrect startxref pointer(1)
+2025-05-09 17:36:48,419 - INFO - 127.0.0.1 - - [09/May/2025 17:36:48] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:36:52,588 - WARNING - incorrect startxref pointer(1)
+2025-05-09 17:36:52,593 - INFO - 127.0.0.1 - - [09/May/2025 17:36:52] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:37:18,571 - INFO - 127.0.0.1 - - [09/May/2025 17:37:18] "GET / HTTP/1.1" 200 -
+2025-05-09 17:37:18,596 - INFO - 127.0.0.1 - - [09/May/2025 17:37:18] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-05-09 17:37:18,597 - INFO - 127.0.0.1 - - [09/May/2025 17:37:18] "[36mGET /static/app.js HTTP/1.1[0m" 304 -
+2025-05-09 17:42:27,333 - INFO - 127.0.0.1 - - [09/May/2025 17:42:27] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:42:27,567 - INFO - 127.0.0.1 - - [09/May/2025 17:42:27] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:42:27,670 - INFO - 127.0.0.1 - - [09/May/2025 17:42:27] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:42:27,901 - INFO - 127.0.0.1 - - [09/May/2025 17:42:27] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:42:28,005 - INFO - 127.0.0.1 - - [09/May/2025 17:42:28] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:42:28,221 - INFO - 127.0.0.1 - - [09/May/2025 17:42:28] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:42:28,330 - INFO - 127.0.0.1 - - [09/May/2025 17:42:28] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:42:28,540 - INFO - 127.0.0.1 - - [09/May/2025 17:42:28] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:42:28,653 - INFO - 127.0.0.1 - - [09/May/2025 17:42:28] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:42:28,868 - INFO - 127.0.0.1 - - [09/May/2025 17:42:28] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:42:28,981 - INFO - 127.0.0.1 - - [09/May/2025 17:42:28] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:42:29,193 - INFO - 127.0.0.1 - - [09/May/2025 17:42:29] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:42:29,306 - INFO - 127.0.0.1 - - [09/May/2025 17:42:29] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:42:29,519 - INFO - 127.0.0.1 - - [09/May/2025 17:42:29] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:42:29,623 - INFO - 127.0.0.1 - - [09/May/2025 17:42:29] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:42:29,838 - INFO - 127.0.0.1 - - [09/May/2025 17:42:29] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:45:46,480 - INFO - 127.0.0.1 - - [09/May/2025 17:45:46] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:45:46,729 - INFO - 127.0.0.1 - - [09/May/2025 17:45:46] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:45:46,833 - INFO - 127.0.0.1 - - [09/May/2025 17:45:46] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:45:47,064 - INFO - 127.0.0.1 - - [09/May/2025 17:45:47] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:45:47,158 - INFO - 127.0.0.1 - - [09/May/2025 17:45:47] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:45:47,394 - INFO - 127.0.0.1 - - [09/May/2025 17:45:47] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:45:47,490 - INFO - 127.0.0.1 - - [09/May/2025 17:45:47] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:45:47,715 - INFO - 127.0.0.1 - - [09/May/2025 17:45:47] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:45:47,816 - INFO - 127.0.0.1 - - [09/May/2025 17:45:47] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:45:48,036 - INFO - 127.0.0.1 - - [09/May/2025 17:45:48] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:45:48,148 - INFO - 127.0.0.1 - - [09/May/2025 17:45:48] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:45:48,365 - INFO - 127.0.0.1 - - [09/May/2025 17:45:48] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:45:48,471 - INFO - 127.0.0.1 - - [09/May/2025 17:45:48] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:45:48,684 - INFO - 127.0.0.1 - - [09/May/2025 17:45:48] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:45:48,795 - INFO - 127.0.0.1 - - [09/May/2025 17:45:48] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:45:49,001 - INFO - 127.0.0.1 - - [09/May/2025 17:45:49] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:47:38,437 - INFO - 127.0.0.1 - - [09/May/2025 17:47:38] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:47:38,717 - INFO - 127.0.0.1 - - [09/May/2025 17:47:38] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:47:38,805 - INFO - 127.0.0.1 - - [09/May/2025 17:47:38] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:47:39,044 - INFO - 127.0.0.1 - - [09/May/2025 17:47:39] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:47:39,138 - INFO - 127.0.0.1 - - [09/May/2025 17:47:39] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:47:39,365 - INFO - 127.0.0.1 - - [09/May/2025 17:47:39] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:47:39,475 - INFO - 127.0.0.1 - - [09/May/2025 17:47:39] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:47:39,702 - INFO - 127.0.0.1 - - [09/May/2025 17:47:39] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:47:39,815 - INFO - 127.0.0.1 - - [09/May/2025 17:47:39] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:47:40,044 - INFO - 127.0.0.1 - - [09/May/2025 17:47:40] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:47:40,149 - INFO - 127.0.0.1 - - [09/May/2025 17:47:40] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:47:40,382 - INFO - 127.0.0.1 - - [09/May/2025 17:47:40] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:47:40,479 - INFO - 127.0.0.1 - - [09/May/2025 17:47:40] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:47:40,731 - INFO - 127.0.0.1 - - [09/May/2025 17:47:40] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:47:40,814 - INFO - 127.0.0.1 - - [09/May/2025 17:47:40] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:47:41,068 - INFO - 127.0.0.1 - - [09/May/2025 17:47:41] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:49:12,104 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.195:5001
+2025-05-09 17:49:12,105 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-09 17:49:13,629 - INFO - 127.0.0.1 - - [09/May/2025 17:49:13] "GET / HTTP/1.1" 200 -
+2025-05-09 17:49:13,773 - INFO - 127.0.0.1 - - [09/May/2025 17:49:13] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-05-09 17:49:13,777 - INFO - 127.0.0.1 - - [09/May/2025 17:49:13] "[36mGET /static/app.js HTTP/1.1[0m" 304 -
+2025-05-09 17:49:20,886 - INFO - Loaded model: random_forest_URL_pickle
+2025-05-09 17:49:20,887 - ERROR - Error in /predict: The feature names should match those that were passed during fit.
+Feature names unseen at fit time:
+- has_phishing_keywords
+- letter_to_number_ratio
+- num_letters_in_domain
+- num_numbers_in_domain
+- num_query_params
+- ...
+
+2025-05-09 17:49:20,887 - INFO - 127.0.0.1 - - [09/May/2025 17:49:20] "[35m[1mPOST /predict HTTP/1.1[0m" 500 -
+2025-05-09 17:49:41,911 - ERROR - Error in /predict: The feature names should match those that were passed during fit.
+Feature names unseen at fit time:
+- has_phishing_keywords
+- letter_to_number_ratio
+- num_letters_in_domain
+- num_numbers_in_domain
+- num_query_params
+- ...
+
+2025-05-09 17:49:41,912 - INFO - 127.0.0.1 - - [09/May/2025 17:49:41] "[35m[1mPOST /predict HTTP/1.1[0m" 500 -
+2025-05-09 17:49:45,774 - ERROR - Error in /predict: The feature names should match those that were passed during fit.
+Feature names unseen at fit time:
+- has_phishing_keywords
+- letter_to_number_ratio
+- num_letters_in_domain
+- num_numbers_in_domain
+- num_query_params
+- ...
+
+2025-05-09 17:49:45,775 - INFO - 127.0.0.1 - - [09/May/2025 17:49:45] "[35m[1mPOST /predict HTTP/1.1[0m" 500 -
+2025-05-09 17:49:46,610 - ERROR - Error in /predict: The feature names should match those that were passed during fit.
+Feature names unseen at fit time:
+- has_phishing_keywords
+- letter_to_number_ratio
+- num_letters_in_domain
+- num_numbers_in_domain
+- num_query_params
+- ...
+
+2025-05-09 17:49:46,611 - INFO - 127.0.0.1 - - [09/May/2025 17:49:46] "[35m[1mPOST /predict HTTP/1.1[0m" 500 -
+2025-05-09 17:50:51,314 - ERROR - Error in /predict: The feature names should match those that were passed during fit.
+Feature names unseen at fit time:
+- has_phishing_keywords
+- letter_to_number_ratio
+- num_letters_in_domain
+- num_numbers_in_domain
+- num_query_params
+- ...
+
+2025-05-09 17:50:51,316 - INFO - 127.0.0.1 - - [09/May/2025 17:50:51] "[35m[1mPOST /predict HTTP/1.1[0m" 500 -
+2025-05-09 17:54:57,529 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.195:5001
+2025-05-09 17:54:57,530 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-09 17:55:01,796 - INFO - 127.0.0.1 - - [09/May/2025 17:55:01] "GET / HTTP/1.1" 200 -
+2025-05-09 17:55:01,957 - INFO - 127.0.0.1 - - [09/May/2025 17:55:01] "[36mGET /static/app.js HTTP/1.1[0m" 304 -
+2025-05-09 17:55:01,960 - INFO - 127.0.0.1 - - [09/May/2025 17:55:01] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-05-09 17:55:07,405 - INFO - Loaded model: random_forest_URL_pickle
+2025-05-09 17:55:07,410 - INFO - 127.0.0.1 - - [09/May/2025 17:55:07] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:55:14,947 - INFO - 127.0.0.1 - - [09/May/2025 17:55:14] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:55:15,213 - INFO - 127.0.0.1 - - [09/May/2025 17:55:15] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:55:15,290 - INFO - 127.0.0.1 - - [09/May/2025 17:55:15] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:55:15,533 - INFO - 127.0.0.1 - - [09/May/2025 17:55:15] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:55:15,608 - INFO - 127.0.0.1 - - [09/May/2025 17:55:15] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:55:15,853 - INFO - 127.0.0.1 - - [09/May/2025 17:55:15] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:55:15,921 - INFO - 127.0.0.1 - - [09/May/2025 17:55:15] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:55:16,165 - INFO - 127.0.0.1 - - [09/May/2025 17:55:16] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:55:16,231 - INFO - 127.0.0.1 - - [09/May/2025 17:55:16] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:55:16,477 - INFO - 127.0.0.1 - - [09/May/2025 17:55:16] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:55:16,543 - INFO - 127.0.0.1 - - [09/May/2025 17:55:16] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:55:16,790 - INFO - 127.0.0.1 - - [09/May/2025 17:55:16] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:55:16,855 - INFO - 127.0.0.1 - - [09/May/2025 17:55:16] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:55:17,102 - INFO - 127.0.0.1 - - [09/May/2025 17:55:17] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:55:17,171 - INFO - 127.0.0.1 - - [09/May/2025 17:55:17] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:55:17,413 - INFO - 127.0.0.1 - - [09/May/2025 17:55:17] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:55:33,692 - INFO - 127.0.0.1 - - [09/May/2025 17:55:33] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:55:34,025 - INFO - 127.0.0.1 - - [09/May/2025 17:55:34] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:55:34,281 - INFO - 127.0.0.1 - - [09/May/2025 17:55:34] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:58:34,801 - INFO - 127.0.0.1 - - [09/May/2025 17:58:34] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:58:51,250 - INFO - 127.0.0.1 - - [09/May/2025 17:58:51] "POST /predict HTTP/1.1" 200 -
+2025-05-09 17:59:08,769 - INFO - 127.0.0.1 - - [09/May/2025 17:59:08] "POST /predict HTTP/1.1" 200 -

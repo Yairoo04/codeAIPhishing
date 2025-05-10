@@ -2,30 +2,7 @@ import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras import layers, callbacks, applications
 import matplotlib.pyplot as plt
-import os
-
-def load_dataset(dataset_path, image_size=(128, 128), batch_size=32):
-    train_dataset = tf.keras.utils.image_dataset_from_directory(
-        dataset_path,
-        label_mode='binary',  # Nhãn nhị phân: 0 (legit), 1 (phishing)
-        image_size=image_size,
-        batch_size=batch_size,
-        validation_split=0.2,
-        subset="training",
-        seed=42
-    )
-    
-    val_dataset = tf.keras.utils.image_dataset_from_directory(
-        dataset_path,
-        label_mode='binary',
-        image_size=image_size,
-        batch_size=batch_size,
-        validation_split=0.2,
-        subset="validation",
-        seed=42
-    )
-    
-    return train_dataset, val_dataset
+from data_loader import load_dataset
 
 # Sử dụng Transfer Learning (EfficientNetB0)
 def build_cnn(input_shape=(128, 128, 3)):

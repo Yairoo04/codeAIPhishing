@@ -117,7 +117,13 @@ Kết quả ví dụ của mô hình Random Forest trên các loại dữ liệu
 | **Phishing URL**    | 93.0%    | 95.0%     | 95.0%  |
 | **Phishing PDF**    | 99.0%    | 99.0%     | 99.0%  |
 | **Phishing Email**  | 99.0%    | 100%      | 99.0%  |
-| **Phishing Hình ảnh** | 88.0%    | 85.0%     | 87.0%  |
+
+Kết quả ví dụ của mô hình CNN trên loại dữ liệu phishing ảnh:
+
+| Mô Hình               | Accuracy | Lost  | Val_Accuracy | Val_Loss |
+|-----------------------|----------|-------|--------------|----------|
+| **Phishing Hình ảnh** | 88.0%    | 30.0% | 85.0%        | 37%      |
+
 
 ## Kết Luận
 Hệ thống này chứng minh sức mạnh của các kỹ thuật học máy, đặc biệt là **Random Forest** và **CNN**, trong việc phát hiện các mối đe dọa phishing qua nhiều dạng dữ liệu khác nhau như URL, email, PDF và hình ảnh. Dự án hướng đến việc cải thiện an ninh mạng bằng cách cung cấp một giải pháp hiệu quả và dễ dàng triển khai để phát hiện phishing.

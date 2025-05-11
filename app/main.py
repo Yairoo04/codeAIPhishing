@@ -25,7 +25,6 @@ from Phishing_URL_Models.feature_extraction import extract_features
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": ["http://localhost:3000"]}})
 
-# Cấu hình
 UPLOAD_FOLDER = os.getenv("UPLOAD_FOLDER", "./Uploads")
 ALLOWED_IMAGE_EXTENSIONS = {"png", "jpg", "jpeg"}
 ALLOWED_PDF_EXTENSION = {"pdf"}
@@ -83,7 +82,6 @@ EXPECTED_FEATURES = [
     "XFA", "Colors"
 ]
 
-# Quản lý mô hình
 class ModelRegistry:
     def __init__(self, model_dir: str):
         self.model_dir = model_dir

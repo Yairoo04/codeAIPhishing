@@ -1,4 +1,3 @@
-// Xử lý sự kiện chuyển đổi tab
 document.querySelectorAll('button[id^="tab-"]').forEach((tab) => {
   tab.addEventListener("click", () => {
     document
@@ -14,7 +13,6 @@ document.querySelectorAll('button[id^="tab-"]').forEach((tab) => {
   });
 });
 
-// Hiển thị spinner khi đang tải
 function showLoading() {
   const resultContent = document.getElementById("resultContent");
   resultContent.innerHTML =
@@ -91,7 +89,6 @@ function uploadFile(type) {
     return;
   }
 
-  // Nếu là hình ảnh, hiển thị ảnh ngay
   if (type === "image" && input.type.startsWith("image/")) {
     const reader = new FileReader();
     reader.onload = function (e) {
@@ -199,7 +196,6 @@ function uploadFile(type) {
     });
 }
 
-// Hiển thị đặc trưng phân tích
 function displayFeatures(features) {
   document.getElementById("featuresSection").classList.remove("hidden");
   const featuresList = document.getElementById("featuresList");

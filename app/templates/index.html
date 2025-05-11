@@ -1,37 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-  <title>Phishing Detection</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;800&display=swap" rel="stylesheet">
+  <title>Kiểm Tra Lừa Đảo - Bảo Vệ Bạn Trực Tuyến</title>
 </head>
-<body>
-  <div class="container">
-    <h1>Phishing Detection</h1>
 
-    <div class="row">
-      <div class="column">
-        <h2>Check URL</h2>
-        <label for="urlInput">Enter URL to check:</label>
-        <input type="text" id="urlInput" placeholder="Enter URL..." />
-        <br>
-        <button onclick="checkURL()">Check URL</button>
-        <div id="urlResult" class="result-box"></div>
+<body class="flex items-center justify-center p-6">
+  <div class="container mx-auto max-w-4xl">
+    <div class="text-center mb-8">
+      <h1 class="text-4xl font-bold text-blue-900 tracking-wide uppercase" style="font-family: sans-serif;">
+        <i class="fas fa-lock mr-2"></i>Kiểm Tra Lừa Đảo - Bảo Vệ Bạn Trực Tuyến
+      </h1>
+      <p class="text-gray-600 mt-2">Nhập URL, tải hình ảnh, email hoặc tập tin để kiểm tra độ an toàn.</p>
+    </div>
+
+    <div class="card p-6 mb-6">
+      <div class="flex justify-center mb-4 space-x-2">
+        <button id="tab-url" class="tab-active px-4 py-2 rounded-l-lg flex items-center gap-2">
+          <i class="fas fa-globe"></i> Kiểm Tra URL
+        </button>
+        <button id="tab-image" class="px-4 py-2 flex items-center gap-2">
+          <i class="fas fa-image"></i> Kiểm Tra Hình Ảnh
+        </button>
+        <button id="tab-file" class="px-4 py-2 flex items-center gap-2">
+          <i class="fas fa-file"></i> Kiểm Tra Tập Tin
+        </button>
+        <button id="tab-email" class="px-4 py-2 rounded-r-lg flex items-center gap-2">
+          <i class="fas fa-envelope"></i> Kiểm Tra Email
+        </button>
       </div>
 
-      <div class="column">
-        <h2>Check File</h2>
-        <label for="fileInput">Upload an image, PDF, or email file:</label>
-        <input type="file" id="fileInput" accept="image/*,.pdf,.eml" />
-        <br>
-        <button onclick="uploadFile()">Check File</button>
-        <div id="preview"></div>
-        <div id="fileResult" class="result-box"></div>
+      <div id="url-section" class="tab-content">
+        <input type="text" id="urlInput" placeholder="Nhập URL"
+          class="w-full p-3 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <button onclick="checkURL()"
+          class="w-full bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition duration-300 flex items-center justify-center gap-2">
+          <i class="fas fa-search"></i> Kiểm tra ngay
+        </button>
+      </div>
+      <div id="image-section" class="tab-content hidden">
+        <input type="file" id="imageInput" accept="image/*" class="w-full p-2 border border-gray-300 rounded-lg mb-4">
+        <button onclick="uploadFile('image')"
+          class="w-full bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition duration-300 flex items-center justify-center gap-2">
+          <i class="fas fa-upload"></i> Tải lên và kiểm tra
+        </button>
+
+        <div id="preview" class="mt-4"></div>
+      </div>
+      <div id="file-section" class="tab-content hidden">
+        <input type="file" id="fileInput" accept=".pdf,.eml" class="w-full p-2 border border-gray-300 rounded-lg mb-4">
+        <button onclick="uploadFile('file')"
+          class="w-full bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition duration-300 flex items-center justify-center gap-2">
+          <i class="fas fa-upload"></i> Tải lên và kiểm tra
+        </button>
+      </div>
+      <div id="email-section" class="tab-content hidden">
+        <input type="file" id="emailInput" accept=".eml" class="w-full p-2 border border-gray-300 rounded-lg mb-4">
+        <button onclick="uploadFile('email')"
+          class="w-full bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition duration-300 flex items-center justify-center gap-2">
+          <i class="fas fa-upload"></i> Tải lên và kiểm tra
+        </button>
+      </div>
+    </div>
+
+    <div id="resultSection" class="card p-6 hidden">
+      <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+        <i class="fas fa-chart-line"></i> Kết quả phân tích
+      </h2>
+      <div id="resultContent" class="space-y-4"></div>
+      <div id="featuresSection" class="mt-6 hidden">
+        <h3 class="text-xl font-semibold text-gray-800 mb-3 flex items-center gap-2">
+          <i class="fas fa-list"></i> Đặc trưng phân tích
+        </h3>
+        <div id="featuresList" class="grid grid-cols-1 sm:grid-cols-2 gap-4"></div>
       </div>
     </div>
   </div>
 
   <script src="{{ url_for('static', filename='app.js') }}"></script>
 </body>
+
 </html>

@@ -21,7 +21,6 @@ from typing import Dict, Optional, List, Union
 from sklearn.ensemble import RandomForestClassifier
 
 from Phishing_URL_Models.feature_extraction import extract_features
-from Phishing_Image_Models.data_loader import preprocess_image
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": ["http://localhost:3000"]}})
@@ -344,23 +343,23 @@ def predict():
                         rf_p = rf_model.predict_proba(df)[:, 1][0]
                         ensemble = compute_ensemble_score(rf_p)
                         result = "Phishing" if ensemble > threshold else "Legitimate"
+                        features_dict = df.to_dict(orient='records')[0]
                         logger.info(f"Prediction for {filename}: rf_confidence={rf_p:.4f}, result={result}")
                         return jsonify({
                             "rf_confidence": round(float(rf_p), 4),
-                            "result": result
+                            "result": result,
+                            "features": features_dict
                         }), 200
                     except Exception as e:
                         logger.error(f"Error processing .eml file {filename}: {e}")
                         return jsonify({"error": f"Failed to process .eml file: {str(e)}"}), 400
 
                 elif allowed_file(filename, ALLOWED_IMAGE_EXTENSIONS):
-                    # Load ảnh
                     image = cv2.imread(file_path)
                     if image is None:
                         logger.error(f"Failed to load image: {file_path}")
                         return jsonify({"error": "Invalid or corrupted image file"}), 400
 
-                    # Kiểm tra QR code
                     qr_codes = decode(image)
                     if qr_codes:
                         qr_results = []
@@ -371,25 +370,25 @@ def predict():
                             rf_pred = model_registry.load_model("random_forest_URL", "pickle").predict_proba(rf_features)[:, 1][0]
                             ensemble = compute_ensemble_score(rf_pred)
                             res = "Phishing" if ensemble > threshold else "Legitimate"
+                            features_dict = rf_features.to_dict(orient='records')[0]
                             qr_results.append({
                                 "qr_url": url,
                                 "rf_confidence": round(float(rf_pred), 4),
-                                "result": res
+                                "result": res,
+                                "features": features_dict
                             })
                         return jsonify({"qr_results": qr_results}), 200
 
-                    # Dự đoán bằng CNN
                     try:
                         cnn_input = preprocess_image_for_cnn(image)
                         cnn_model = model_registry.load_model("cnn_phishing_image", "keras")
                         cnn_pred = float(cnn_model.predict(cnn_input, verbose=0)[0][0])
                         result = "Phishing" if cnn_pred > threshold else "Legitimate"
-                        logger.info(f"Image prediction for {filename}: cnn_confidence={cnn_pred:.4f}, result={result}, threshold={threshold}")
+                        logger.info(f"Image prediction for {filename}: cnn_confidence={cnn_pred:.4f}, result={result}")
                         return jsonify({
                             "cnn_confidence": round(float(cnn_pred), 4),
                             "result": result,
-                            "filename": filename,
-                            "threshold_used": threshold
+                            "filename": filename
                         }), 200
                     except Exception as e:
                         logger.error(f"CNN prediction failed for {filename}: {e}")
@@ -401,9 +400,11 @@ def predict():
                     rf_prob = model_registry.load_model("random_forest_file", "pickle").predict_proba(feature_df)[0][1]
                     ensemble = compute_ensemble_score(rf_prob)
                     res = "Phishing" if ensemble > threshold else "Legitimate"
+                    features_dict = feature_df.to_dict(orient='records')[0]
                     return jsonify({
                         "rf_confidence": round(float(rf_prob), 4),
-                        "result": res
+                        "result": res,
+                        "features": features_dict
                     }), 200
 
                 else:
@@ -421,10 +422,12 @@ def predict():
             rf_pred = model_registry.load_model("random_forest_URL", "pickle").predict_proba(rf_features)[:, 1][0]
             ensemble = compute_ensemble_score(rf_pred)
             res = "Phishing" if ensemble > threshold else "Legitimate"
+            features_dict = rf_features.to_dict(orient='records')[0]
             return jsonify({
                 "rf_confidence": round(float(rf_pred), 4),
                 "url": url,
-                "result": res
+                "result": res,
+                "features": features_dict
             }), 200
 
         if "text" in data:
@@ -435,9 +438,11 @@ def predict():
             rf_pred = model_registry.load_model("random_forest_URL", "pickle").predict_proba(rf_features)[:, 1][0]
             ensemble = compute_ensemble_score(rf_pred)
             res = "Phishing" if ensemble > threshold else "Legitimate"
+            features_dict = rf_features.to_dict(orient='records')[0]
             return jsonify({
                 "rf_confidence": round(float(rf_pred), 4),
-                "result": res
+                "result": res,
+                "features": features_dict
             }), 200
 
         return jsonify({"error": "Invalid request format"}), 400

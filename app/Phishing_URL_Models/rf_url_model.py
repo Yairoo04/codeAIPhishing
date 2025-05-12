@@ -1,74 +1,89 @@
 import os
-import pandas as pd
 import pickle
 import matplotlib.pyplot as plt
-import seaborn as sns
+from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.model_selection import train_test_split, RandomizedSearchCV
 from sklearn.metrics import confusion_matrix, classification_report
-from imblearn.over_sampling import SMOTE
-import numpy as np
+import seaborn as sns
 
-data_path = '../datasetURL/dataURLphishing.csv'
-data = pd.read_csv(data_path)
+from pre_process import load_data, preprocess_data
 
-if 'Label' not in data.columns:
-    raise ValueError("Dataset không chứa cột 'Label'")
+CSV_PATH = "dataset_URL/phishing_URL.csv"
+MODEL_PATH = "models/rf_URL_model.pkl"
+RESULTS_PATH = "results/evaluation.txt"
 
-data = data.dropna(subset=['Label'])
-data = data[data['Label'].isin([0, 1])]
+def plot_confusion_matrix(cm, labels, title="Confusion Matrix"):
+    os.makedirs("results", exist_ok=True)
+    plt.figure(figsize=(6, 5))
+    sns.heatmap(cm, annot=True, fmt='d', cmap="Blues", xticklabels=labels, yticklabels=labels, cbar=False)
+    plt.title(title)
+    plt.xlabel("Predicted label")
+    plt.ylabel("True label")
+    plt.savefig('results/confusion_matrix.png')
+    plt.show()
+    plt.close()
 
-label_mapping = {0: 'Legitimate', 1: 'Phishing'}
-data['Label'] = data['Label'].map(label_mapping)
+def save_evaluation(cm, accuracy, precision, recall, report):
+    os.makedirs("results", exist_ok=True)
+    with open(RESULTS_PATH, "w") as f:
+        f.write("Ma trận nhầm lẫn (labels=[1: Phishing, 0: Benign]):\n")
+        f.write(f"{cm}\n\n")
+        f.write("Đánh giá mô hình:\n")
+        f.write(f"- Accuracy  : {accuracy:.2f}\n")
+        f.write(f"- Precision : {precision:.2f}\n")
+        f.write(f"- Recall    : {recall:.2f}\n")
+        f.write("\nClassification Report:\n")
+        f.write(f"{report}\n")
+    print(f"Kết quả đánh giá đã được lưu tại: {RESULTS_PATH}")
 
-X = data.drop(columns=['Label', 'URL'])
-y = data['Label']
+def rf_model():
+    df = load_data(CSV_PATH)
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+    X, y = preprocess_data(df)
+    
+    expected_features = len(df.columns) - 2
+    if X.shape[1] != expected_features:
+        raise ValueError(f"Expected {expected_features} features, got {X.shape[1]}")
 
-param_dist = {
-    'n_estimators': [100, 150, 200, 300, 400, 500],
-    'max_depth': [10, 20, 30, None],
-    'min_samples_split': [2, 5, 10],
-    'min_samples_leaf': [1, 2, 4],
-    'max_features': ['sqrt', 'log2', None]
-}
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.2, random_state=42, stratify=y
+    )
+    print(f"+ Số lượng mẫu train: {len(X_train)}")
+    print(f"+ Số lượng mẫu test: {len(X_test)}")
 
-rf_model = RandomForestClassifier(random_state=42, class_weight='balanced')
+    rf = RandomForestClassifier(n_estimators=100, random_state=42, class_weight='balanced')
+    rf.fit(X_train, y_train)
 
-random_search = RandomizedSearchCV(estimator=rf_model, param_distributions=param_dist,
-                                   n_iter=20, cv=3, scoring='accuracy', n_jobs=-1, random_state=42, verbose=2)
+    if not isinstance(rf, RandomForestClassifier):
+        raise TypeError(f"Model is not a RandomForestClassifier, got {type(rf)}")
 
-random_search.fit(X_train, y_train)
+    os.makedirs("models", exist_ok=True)
+    with open(MODEL_PATH, "wb") as f:
+        pickle.dump(rf, f)
+    print(f"Mô hình đã được lưu tại: {MODEL_PATH}")
 
-print(f"Best parameters: {random_search.best_params_}")
-print(f"Best score: {random_search.best_score_}")
+    y_pred = rf.predict(X_test)
+    cm = confusion_matrix(y_test, y_pred, labels=[1, 0])
+    print("\nMa trận nhầm lẫn (labels=[1: Phishing, 0: Benign]):")
+    print(cm)
 
-print("\nBest parameters found by RandomizedSearchCV:")
-for param, value in random_search.best_params_.items():
-    print(f"{param}: {value}")
+    tp, fn = cm[0]
+    fp, tn = cm[1]
+    accuracy = (tp + tn) / (tp + tn + fp + fn) if (tp + tn + fp + fn) else 0
+    precision = tp / (tp + fp) if (tp + fp) else 0
+    recall = tp / (tp + fn) if (tp + fn) else 0
 
-best_model = random_search.best_estimator_
-y_pred = best_model.predict(X_test)
+    report = classification_report(y_test, y_pred, target_names=["0 (Benign)", "1 (Phishing)"])
 
-cm = confusion_matrix(y_test, y_pred, labels=['Legitimate', 'Phishing'])
+    print("\nĐánh giá mô hình:")
+    print(f"- Accuracy  : {accuracy:.2f}")
+    print(f"- Precision : {precision:.2f}")
+    print(f"- Recall    : {recall:.2f}")
+    print("\nClassification Report:")
+    print(report)
 
-tp = cm[0, 0]
-fn = cm[0, 1]
-fp = cm[1, 0]
-tn = cm[1, 1]
+    plot_confusion_matrix(cm, labels=[1, 0]) 
+    save_evaluation(cm, accuracy, precision, recall, report)
 
-accuracy_manual = (tp + tn) / (tp + tn + fp + fn)
-precision_manual = tp / (tp + fp) if (tp + fp) != 0 else 0
-recall_manual = tp / (tp + fn) if (tp + fn) != 0 else 0
-
-print("\nĐánh giá mô hình:")
-print(f"- Độ chính xác (Accuracy): {accuracy_manual:.2f}")
-print(f"- Độ chính xác dự đoán Phishing (Precision): {precision_manual:.2f}")
-print(f"- Khả năng nhận diện Phishing đúng (Recall): {recall_manual:.2f}")
-
-model_path = '../models/random_forest_URL.pkl'
-with open(model_path, "wb") as f:
-    pickle.dump(best_model, f)
-
-print(f"Model đã được lưu tại: {model_path}")
+if __name__ == "__main__":
+    rf_model()

@@ -29,7 +29,7 @@ UPLOAD_FOLDER = os.getenv("UPLOAD_FOLDER", "./Uploads")
 ALLOWED_IMAGE_EXTENSIONS = {"png", "jpg", "jpeg"}
 ALLOWED_PDF_EXTENSION = {"pdf"}
 ALLOWED_EMAIL_EXTENSION = {"eml"}
-MAX_FILE_SIZE = 10 * 1024 * 1024 
+MAX_FILE_SIZE = 10 * 1024 * 1024
 
 MODEL_DIR = os.getenv("MODEL_DIR", os.path.join(os.path.dirname(os.path.dirname(__file__)), "models"))
 
@@ -80,6 +80,15 @@ EXPECTED_FEATURES = [
     "PageNo", "Encrypt", "ObjStm", "JS", "Javascript", "AA", "OpenAction",
     "Acroform", "JBIG2Decode", "RichMedia", "Launch", "EmbeddedFile",
     "XFA", "Colors"
+]
+
+# Danh sách đặc trưng URL
+URL_FEATURES = [
+    'url_length', 'num_special_chars', 'is_https', 'num_digits', 'domain_length',
+    'num_subdomains', 'num_dashes', 'path_length', 'query_length', 'has_ip',
+    'has_at_symbol', 'redirect_count', 'num_letters_in_domain', 'num_numbers_in_domain',
+    'letter_to_number_ratio', 'has_phishing_keywords', 'num_query_params',
+    'query_string_complexity', 'unicode_in_url'
 ]
 
 class ModelRegistry:
@@ -364,8 +373,9 @@ def predict():
                         for qr in qr_codes:
                             url = qr.data.decode("utf-8")
                             logger.info(f"Detected QR code: {url}")
-                            rf_features = pd.DataFrame([extract_features(url)])
-                            rf_pred = model_registry.load_model("random_forest_URL", "pickle").predict_proba(rf_features)[:, 1][0]
+                            rf_features = pd.Dataまま
+                            rf_model = model_registry.load_model("random_forest_URL", "pickle")
+                            rf_pred = rf_model.predict_proba(rf_features)[:, 1][0]
                             ensemble = compute_ensemble_score(rf_pred)
                             res = "Phishing" if ensemble > threshold else "Legitimate"
                             features_dict = rf_features.to_dict(orient='records')[0]
@@ -412,36 +422,28 @@ def predict():
         if not data:
             return jsonify({"error": "No valid input data"}), 400
 
-        if "url" in data:
-            url = data["url"].strip()
-            if not url:
-                return jsonify({"error": "URL is required"}), 400
-            rf_features = pd.DataFrame([extract_features(url)])
-            rf_pred = model_registry.load_model("random_forest_URL", "pickle").predict_proba(rf_features)[:, 1][0]
-            ensemble = compute_ensemble_score(rf_pred)
-            res = "Phishing" if ensemble > threshold else "Legitimate"
-            features_dict = rf_features.to_dict(orient='records')[0]
-            return jsonify({
-                "rf_confidence": round(float(rf_pred), 4),
-                "url": url,
-                "result": res,
-                "features": features_dict
-            }), 200
-
-        if "text" in data:
-            text = data["text"].strip()
-            if not text:
-                return jsonify({"error": "Text is required"}), 400
-            rf_features = pd.DataFrame([extract_features(text)])
-            rf_pred = model_registry.load_model("random_forest_URL", "pickle").predict_proba(rf_features)[:, 1][0]
-            ensemble = compute_ensemble_score(rf_pred)
-            res = "Phishing" if ensemble > threshold else "Legitimate"
-            features_dict = rf_features.to_dict(orient='records')[0]
-            return jsonify({
-                "rf_confidence": round(float(rf_pred), 4),
-                "result": res,
-                "features": features_dict
-            }), 200
+        if "url" in data or "text" in data:
+            input_text = data.get("url", data.get("text", "")).strip()
+            if not input_text:
+                return jsonify({"error": "URL or text is required"}), 400
+            
+            try:
+                rf_features = pd.DataFrame([extract_features(input_text)], columns=URL_FEATURES)
+                rf_model = model_registry.load_model("random_forest_URL", "pickle")
+                rf_pred = rf_model.predict_proba(rf_features)[:, 1][0]
+                ensemble = compute_ensemble_score(rf_pred)
+                res = "Phishing" if ensemble > threshold else "Legitimate"
+                features_dict = rf_features.to_dict(orient='records')[0]
+                
+                logger.info(f"Prediction for URL/text '{input_text}': rf_confidence={rf_pred:.4f}, result={res}")
+                return jsonify({
+                    "rf_confidence": round(float(rf_pred), 4),
+                    "result": res,
+                    "features": features_dict
+                }), 200
+            except Exception as e:
+                logger.error(f"Error processing URL/text '{input_text}': {e}")
+                return jsonify({"error": f"Failed to process URL/text: {str(e)}"}), 400
 
         return jsonify({"error": "Invalid request format"}), 400
 

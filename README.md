@@ -60,6 +60,7 @@ pip install -r requirements.txt
    python app/main.py
    ```
    Ứng dụng web sẽ chạy trên `http://localhost:5000`.
+   Lưu ý: bạn sẽ cần phải mở file random_forest_file.txt nằm trong thư mục models, tải file random_forest_file.pkl vì yếu tố file quá lớn nên không thể push lên git được
 
 ### Các Mô Hình Phishing:
 - **Phishing Email**: Mô hình được huấn luyện trong thư mục `Phishing_Email_Models` sử dụng tệp `train_RF_email.py`.

@@ -8,9 +8,9 @@ import seaborn as sns
 
 from pre_process import load_data, preprocess_data
 
-CSV_PATH = "dataset_URL/phishing_URL.csv"
-MODEL_PATH = "models/rf_URL_model.pkl"
-RESULTS_PATH = "results/evaluation.txt"
+CSV_PATH = "../dataset_URL/phishing_URL.csv"
+MODEL_PATH = "../models/rf_URL_model.pkl"
+RESULTS_PATH = "../results/evaluation.txt"
 
 def plot_confusion_matrix(cm, labels, title="Confusion Matrix"):
     os.makedirs("results", exist_ok=True)

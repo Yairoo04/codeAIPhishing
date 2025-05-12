@@ -24,10 +24,10 @@ y = data['Label']
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
 
 rf_model = RandomForestClassifier(
-    n_estimators=300,
+    n_estimators=400,
     max_depth=20,
-    min_samples_split=5,
-    min_samples_leaf=2,
+    min_samples_split=2,
+    min_samples_leaf=1,
     max_features='sqrt',
     random_state=42,
     class_weight='balanced'

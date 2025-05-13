@@ -23,7 +23,7 @@ from sklearn.ensemble import RandomForestClassifier
 from Phishing_URL_Models.feature_extraction import extract_features
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": ["http://localhost:3000"]}})
+CORS(app)
 
 UPLOAD_FOLDER = os.getenv("UPLOAD_FOLDER", "./Uploads")
 ALLOWED_IMAGE_EXTENSIONS = {"png", "jpg", "jpeg"}

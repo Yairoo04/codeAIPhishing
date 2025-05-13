@@ -2,7 +2,9 @@ import re
 import math
 from urllib.parse import urlparse
 from collections import Counter
+import logging
 
+logger = logging.getLogger(__name__)
 
 # Hàm trích xuất đặc trưng URL
 def shannon_entropy(data):

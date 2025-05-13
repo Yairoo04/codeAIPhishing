@@ -8,8 +8,8 @@ import seaborn as sns
 
 from pre_process import load_data, preprocess_data
 
-CSV_PATH = "../dataset_URL/phishing_URL.csv"
-MODEL_PATH = "../models/rf_URL_model.pkl"
+CSV_PATH = "../dataset_URL/dataURLphishing.csv"
+MODEL_PATH = "../models/random_forest_URL.pkl"
 RESULTS_PATH = "../results/evaluation.txt"
 
 def plot_confusion_matrix(cm, labels, title="Confusion Matrix"):

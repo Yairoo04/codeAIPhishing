@@ -1182,3 +1182,30 @@ Feature names unseen at fit time:
 2025-05-12 18:23:08,488 - INFO - 127.0.0.1 - - [12/May/2025 18:23:08] "POST /predict HTTP/1.1" 200 -
 2025-05-12 18:24:06,883 - INFO - Loaded model: random_forest_file_pickle
 2025-05-12 18:24:06,897 - INFO - 127.0.0.1 - - [12/May/2025 18:24:06] "POST /predict HTTP/1.1" 200 -
+2025-05-13 08:43:20,711 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.194:5001
+2025-05-13 08:43:20,711 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-13 08:43:22,401 - INFO - 127.0.0.1 - - [13/May/2025 08:43:22] "GET / HTTP/1.1" 200 -
+2025-05-13 08:43:22,533 - INFO - 127.0.0.1 - - [13/May/2025 08:43:22] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-05-13 08:43:22,545 - INFO - 127.0.0.1 - - [13/May/2025 08:43:22] "GET /static/app.js HTTP/1.1" 200 -
+2025-05-13 08:43:22,784 - INFO - 127.0.0.1 - - [13/May/2025 08:43:22] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-13 08:43:36,263 - INFO - Extracted headers: {'Content-Type': 'multipart/mixed; boundary="===============7986995351305714269=="', 'MIME-Version': '1.0', 'From': 'testuser@example.com', 'To': 'Undisclosed.Recipients@example.com', 'Subject': 'Exclusive Business Opportunity Awaits You..Join Now!', 'Date': 'Mon, 12 May 2025 18:41:55 -0700', 'Message-Id': '<0000abcd1234$0000efgh$0000ijkl@example.com>', 'X-Priority': '3', 'X-Msmail-Priority': 'Normal', 'Received': 'from 203.0.113.10 (client.example.com [203.0.113.10]) by mail.example.com (8.11.3/8.11.0) with SMTP id f5Q7PHp81463; Tue, 13 May 2025 03:41:55 +0200 (envelope-from testuser@example.com)'}
+2025-05-13 08:43:36,302 - INFO - Extracted email features: {'hops': 2, 'missing_subject': 0, 'missing_to': 0, 'missing_content-type': 0, 'missing_mime-version': 0, 'missing_x-mailer': 1, 'missing_delivered-to': 1, 'missing_list-unsubscribe': 1, 'missing_received-spf': 1, 'missing_reply-to': 1, 'str_from_chevron': 0, 'str_to_chevron': 0, 'str_message-ID_dollar': 0, 'str_return-path_bounce': 0, 'str_content-type_texthtml': 0, 'domain_match_from_return-path': 0, 'domain_match_to_from': 1, 'domain_match_to_message-id': 0, 'domain_match_from_reply-to': 0, 'domain_match_message-id_from': 0, 'length_from': 20, 'num_recipients_to': 1, 'num_recipients_cc': 0, 'time_zone': 1, 'day_of_week': 0, 'span_time': 0.0, 'date_comp_date_received': 1, 'content-encoding-val': 0, 'received_str_forged': 0, 'number_replies': 0}
+2025-05-13 08:43:36,351 - INFO - Loaded model: random_forest_email_pickle
+2025-05-13 08:43:36,365 - INFO - Prediction for received_phishing_email.eml: rf_confidence=0.6900, result=Phishing
+2025-05-13 08:43:36,372 - INFO - 127.0.0.1 - - [13/May/2025 08:43:36] "POST /predict HTTP/1.1" 200 -
+2025-05-13 09:06:51,853 - INFO - Extracted headers: {'Content-Type': 'multipart/mixed; boundary="===============2244041084437640406=="', 'MIME-Version': '1.0', 'From': 'testuser@example.com', 'To': 'Undisclosed.Recipients@example.com', 'Subject': 'C? H?i L?m Gi?u Tuy?t V?i ?ang Ch? B?n..Tham Gia Ngay!', 'Date': 'Mon, 12 May 2025 19:06:14 -0700', 'Message-Id': '<0000abcd1234$0000efgh$0000ijkl@example.com>', 'X-Priority': '3', 'X-Msmail-Priority': 'Normal', 'Received': 'from mail.example.com (mail.example.com [192.168.1.100]) by server.example.com (Postfix) with ESMTP id ABCDEF12345 for <legioiho@gmail.com>; Tue, 13 May 2025 04:06:14 +0200'}
+2025-05-13 09:06:51,856 - INFO - Extracted email features: {'hops': 2, 'missing_subject': 0, 'missing_to': 0, 'missing_content-type': 0, 'missing_mime-version': 0, 'missing_x-mailer': 1, 'missing_delivered-to': 1, 'missing_list-unsubscribe': 1, 'missing_received-spf': 1, 'missing_reply-to': 1, 'str_from_chevron': 0, 'str_to_chevron': 0, 'str_message-ID_dollar': 0, 'str_return-path_bounce': 0, 'str_content-type_texthtml': 0, 'domain_match_from_return-path': 0, 'domain_match_to_from': 1, 'domain_match_to_message-id': 0, 'domain_match_from_reply-to': 0, 'domain_match_message-id_from': 0, 'length_from': 20, 'num_recipients_to': 1, 'num_recipients_cc': 0, 'time_zone': 1, 'day_of_week': 0, 'span_time': 0.0, 'date_comp_date_received': 1, 'content-encoding-val': 0, 'received_str_forged': 0, 'number_replies': 0}
+2025-05-13 09:06:51,857 - INFO - Prediction for received_phishing_email.eml: rf_confidence=0.6900, result=Phishing
+2025-05-13 09:06:51,857 - INFO - 127.0.0.1 - - [13/May/2025 09:06:51] "POST /predict HTTP/1.1" 200 -
+2025-05-13 17:11:32,252 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.194:5001
+2025-05-13 17:11:32,252 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-13 17:13:59,938 - INFO - 127.0.0.1 - - [13/May/2025 17:13:59] "GET / HTTP/1.1" 200 -
+2025-05-13 17:14:00,205 - INFO - 127.0.0.1 - - [13/May/2025 17:14:00] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-05-13 17:14:00,220 - INFO - 127.0.0.1 - - [13/May/2025 17:14:00] "[36mGET /static/app.js HTTP/1.1[0m" 304 -
+2025-05-13 17:14:00,796 - INFO - 127.0.0.1 - - [13/May/2025 17:14:00] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
